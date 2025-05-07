@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zona Biker 15 - Tienda de Motos y Accesorios</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --biker-red: #e30613;
+            --biker-black: #1a1a1a;
+        }
+
+        .bg-biker-red {
+            background-color: var(--biker-red);
+        }
+
+        .bg-biker-black {
+            background-color: var(--biker-black);
+        }
+
+        .text-biker-red {
+            color: var(--biker-red);
+        }
+
+        .text-biker-black {
+            color: var(--biker-black);
+        }
+
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hover-grow {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-grow:hover {
+            transform: scale(1.05);
+        }
+
+        /* Animaciones para el menú de redes sociales */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(10px); }
+        }
+
+        #social-menu {
+            transform-origin: bottom right;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <!-- Hero Section with Image Carousel -->
+    <section class="relative bg-biker-black text-white">
+        <div class="absolute inset-0 bg-black opacity-30"></div>
+
+        <!-- Image Carousel -->
+        <div class="relative z-0 w-full h-96 md:h-[500px] overflow-hidden">
+            <div id="hero-carousel" class="w-full h-full bg-biker-black">
+                <!-- Las imágenes se cargarán dinámicamente desde carousel.js -->
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex justify-center -mt-12">
+                <!-- Indicadores del carrusel -->
+                <div id="carousel-indicators" class="flex space-x-2">
+                    <!-- Los indicadores se generarán dinámicamente desde carousel.js -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-biker-black">Nuestros Servicios</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover-grow">
+                    <div class="h-48 bg-biker-black relative overflow-hidden">
+                        <img src="images/accesorios.png" alt="Accesorios para Motos" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300" onerror="this.src='images/placeholder.jpg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                        <div class="absolute bottom-2 right-2">
+                            <i class="fas fa-motorcycle text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-biker-red">Accesorios para Motos</h3>
+                        <p class="text-gray-700">Amplia gama de accesorios de calidad para personalizar y mejorar tu moto.</p>
+                        <a href="services.html#accesorios" class="mt-4 inline-block text-biker-red hover:underline">Ver más →</a>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover-grow">
+                    <div class="h-48 bg-biker-black relative overflow-hidden">
+                        <img src="images/tunning.png" alt="Tuning de Motos" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300" onerror="this.src='images/placeholder.jpg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                        <div class="absolute bottom-2 right-2">
+                            <i class="fas fa-tools text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-biker-red">Tuning de Motos</h3>
+                        <p class="text-gray-700">Servicio profesional de personalización y mejora de rendimiento para tu moto.</p>
+                        <a href="services.html#tuning" class="mt-4 inline-block text-biker-red hover:underline">Ver más →</a>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover-grow">
+                    <div class="h-48 bg-biker-black relative overflow-hidden">
+                        <img src="images/seguridad.png" alt="Cascos y Seguridad" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300" onerror="this.src='images/placeholder.jpg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                        <div class="absolute bottom-2 right-2">
+                            <i class="fas fa-hard-hat text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-biker-red">Cascos y Seguridad</h3>
+                        <p class="text-gray-700">Equipamiento de protección de alta calidad para garantizar tu seguridad.</p>
+                        <a href="services.html#seguridad" class="mt-4 inline-block text-biker-red hover:underline">Ver más →</a>
+                    </div>
+                </div>
+
+                <!-- Service 4: Custom Services -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover-grow">
+                    <div class="h-48 bg-biker-black relative overflow-hidden">
+                        <img src="images/personalizacion.png" alt="Servicios Personalizados" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300" onerror="this.src='images/placeholder.jpg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                        <div class="absolute bottom-2 right-2">
+                            <i class="fas fa-cogs text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-biker-red">Servicios Personalizados</h3>
+                        <p class="text-gray-700">Soluciones a medida para tus necesidades específicas y proyectos exclusivos.</p>
+                        <a href="services.html#personalizados" class="mt-4 inline-block text-biker-red hover:underline">Ver más →</a>
+                    </div>
+                </div>
+
+                <!-- Service 5: Provincial Shipping -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover-grow">
+                    <div class="h-48 bg-biker-black relative overflow-hidden">
+                        <img src="images/envios.png" alt="Envíos a Provincias" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300" onerror="this.src='images/placeholder.jpg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                        <div class="absolute bottom-2 right-2">
+                            <i class="fas fa-shipping-fast text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-biker-red">Envíos a Provincias</h3>
+                        <p class="text-gray-700">Servicio de envío seguro y eficiente a todas las provincias del país.</p>
+                        <a href="services.html#envios" class="mt-4 inline-block text-biker-red hover:underline">Ver más →</a>
+                    </div>
+                </div>
+
+                <!-- Service 6: Scale Model Gifts -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover-grow">
+                    <div class="h-48 bg-biker-black relative overflow-hidden">
+                        <img src="images/escala.png" alt="Regalos a Escala" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300" onerror="this.src='images/placeholder.jpg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                        <div class="absolute bottom-2 right-2">
+                            <i class="fas fa-gift text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-biker-red">Regalos a Escala</h3>
+                        <p class="text-gray-700">El regalo ideal para los amantes de las motos: modelos a escala de alta calidad.</p>
+                        <a href="catalog.html#modelos" class="mt-4 inline-block text-biker-red hover:underline">Ver catálogo →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-biker-black">Marcas con las que Trabajamos</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Brand logos with better styling -->
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                    <div class="h-16 w-full flex items-center justify-center">
+                        <div class="relative w-full h-full flex items-center justify-center">
+                            <i class="fas fa-motorcycle text-5xl text-biker-red"></i>
+                            <span class="absolute bottom-0 text-xs font-bold text-gray-700">HONDA</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                    <div class="h-16 w-full flex items-center justify-center">
+                        <div class="relative w-full h-full flex items-center justify-center">
+                            <i class="fas fa-motorcycle text-5xl text-biker-red"></i>
+                            <span class="absolute bottom-0 text-xs font-bold text-gray-700">YAMAHA</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                    <div class="h-16 w-full flex items-center justify-center">
+                        <div class="relative w-full h-full flex items-center justify-center">
+                            <i class="fas fa-motorcycle text-5xl text-biker-red"></i>
+                            <span class="absolute bottom-0 text-xs font-bold text-gray-700">SUZUKI</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                    <div class="h-16 w-full flex items-center justify-center">
+                        <div class="relative w-full h-full flex items-center justify-center">
+                            <i class="fas fa-motorcycle text-5xl text-biker-red"></i>
+                            <span class="absolute bottom-0 text-xs font-bold text-gray-700">KAWASAKI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <a href="brands.html" class="bg-biker-red hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">Ver todas las marcas</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-biker-black">Eventos</h2>
+            <div class="text-center mb-8">
+                <p class="text-gray-700 max-w-3xl mx-auto">
+                    En Zona Biker 15 participamos activamente en los eventos más importantes del mundo de las motocicletas. Conoce dónde estaremos próximamente y revive nuestras participaciones anteriores.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-1 gap-8 mb-10 max-w-2xl mx-auto">
+                <!-- Single Event -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover-grow">
+                    <div class="h-64 bg-biker-black relative overflow-hidden">
+                        <img src="images/evento1.png" alt="Evento Zona Biker" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300" onerror="this.src='images/placeholder.jpg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute top-2 left-2">
+                            <span class="bg-gray-500 text-white text-sm font-bold py-1 px-3 rounded shadow-lg">Evento</span>
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <span class="bg-black bg-opacity-70 text-white text-sm font-bold py-1 px-3 rounded shadow-lg">20 Oct 2025</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-biker-black">Evento Zona Biker 2025</h3>
+                        <p class="text-gray-700 mb-4">Presentamos nuestra nueva línea de accesorios exclusivos y realizamos demostraciones de instalación en vivo para el mercado peruano.</p>
+                        <a href="events.html" class="inline-block text-biker-red hover:underline">Ver detalles →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="events.html" class="bg-biker-red hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">Ver todos los eventos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Find Us Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-biker-black">Encuéntranos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-biker-red">Nuestra Ubicación</h3>
+                    <p class="text-gray-700 mb-4">
+                        Estamos ubicados en una zona de fácil acceso, con amplio estacionamiento para que puedas visitarnos cómodamente.
+                    </p>
+                    <div class="mb-6">
+                        <p class="font-bold mb-1">Dirección:</p>
+                        <p class="text-gray-700">Carretera central paradero 15 Amarilis - Hco, Huánuco, Peru</p>
+                    </div>
+                    <div class="mb-6">
+                        <p class="font-bold mb-1">Horario:</p>
+                        <p class="text-gray-700">Lunes a Viernes: 9:00 - 20:00</p>
+                        <p class="text-gray-700">Sábados: 10:00 - 14:00</p>
+                    </div>
+                    <div>
+                        <p class="font-bold mb-1">Contacto:</p>
+                        <p class="text-gray-700">Teléfono: 917 025 103</p>
+                        <p class="text-gray-700">Email: Gsegurityaslam@gmail.com</p>
+                    </div>
+                </div>
+                <div class="h-96 bg-gray-200 rounded-lg overflow-hidden shadow-lg">
+                    <!-- Tabs for Map and Route with improved styling -->
+                    <div class="bg-gray-100 flex border-b">
+                        <button id="map-tab" class="py-2 px-4 bg-biker-red text-white font-medium flex-1 focus:outline-none transition duration-300 flex items-center justify-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i> Mapa
+                        </button>
+                        <button id="route-tab" class="py-2 px-4 bg-gray-200 text-gray-700 hover:bg-gray-300 font-medium flex-1 focus:outline-none transition duration-300 flex items-center justify-center">
+                            <i class="fas fa-route mr-2"></i> Cómo Llegar
+                        </button>
+                    </div>
+
+                    <!-- Map Content -->
+                    <div id="map-content" class="h-full w-full">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3936.6553120592537!2d-76.24523492414866!3d-9.929707089387424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91a7c2f1d1c8b2f7%3A0x5d7c8d5f5e8e8e8e!2sZona%20Biker%2015!5e0!3m2!1ses!2spe!4v1700000000000!5m2!1ses!2spe"
+                            style="border:0; width:100%; height:100%;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+
+                    <!-- Route Content (Hidden by default) -->
+                    <div id="route-content" class="h-full hidden bg-black flex items-center justify-center">
+                        <!-- Video container for TikTok video with proper aspect ratio -->
+                        <div class="relative h-full w-auto max-w-full mx-auto flex items-center justify-center">
+                            <video
+                                id="route-video"
+                                class="h-full max-h-full max-w-full object-contain"
+                                controls
+                                poster="images/route-poster.jpg">
+                                <source src="videos/ruta.mp4" type="video/mp4">
+                                Tu navegador no soporta videos HTML5.
+                            </video>
+                            <!-- Overlay with instructions when video is not playing -->
+                            <div id="video-overlay" class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center text-white p-4 pointer-events-none">
+                                <i class="fas fa-play-circle text-5xl mb-4 text-biker-red"></i>
+                                <p class="text-center">Haz clic para ver el video con instrucciones para llegar a nuestra tienda</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional instructions -->
+            <div class="mt-8 text-center">
+                <p class="text-gray-700 mb-4">Puedes encontrarnos fácilmente utilizando Google Maps o siguiendo las indicaciones del video.</p>
+                <a href="https://www.google.com/maps?q=-9.9297071,-76.2426442" target="_blank" class="bg-biker-red hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300 inline-flex items-center mr-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Abrir en Google Maps
+                </a>
+                <a href="contact.html" class="bg-biker-black hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg transition duration-300 inline-flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    Contactar para más información
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript for tabs and video overlay -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality for Map/Route
+            const mapTab = document.getElementById('map-tab');
+            const routeTab = document.getElementById('route-tab');
+            const mapContent = document.getElementById('map-content');
+            const routeContent = document.getElementById('route-content');
+            const routeVideo = document.getElementById('route-video');
+            const videoOverlay = document.getElementById('video-overlay');
+
+            // Prevenir que los eventos del iframe del mapa afecten a las pestañas
+            const mapIframe = mapContent.querySelector('iframe');
+            if (mapIframe) {
+                mapIframe.addEventListener('load', function() {
+                    this.style.pointerEvents = 'none';
+
+                    // Habilitar eventos de puntero solo cuando el mouse está sobre el mapa
+                    mapContent.addEventListener('mouseover', function() {
+                        mapIframe.style.pointerEvents = 'auto';
+                    });
+
+                    mapContent.addEventListener('mouseout', function() {
+                        mapIframe.style.pointerEvents = 'none';
+                    });
+                });
+            }
+
+            // Video overlay functionality
+            if (routeVideo && videoOverlay) {
+                // Hide overlay when video starts playing
+                routeVideo.addEventListener('play', function() {
+                    videoOverlay.classList.add('hidden');
+                });
+
+                // Show overlay when video is paused or ended
+                routeVideo.addEventListener('pause', function() {
+                    videoOverlay.classList.remove('hidden');
+                });
+
+                routeVideo.addEventListener('ended', function() {
+                    videoOverlay.classList.remove('hidden');
+                });
+
+                // Click on overlay to play video
+                videoOverlay.addEventListener('click', function() {
+                    routeVideo.play();
+                });
+            }
+
+            mapTab.addEventListener('click', function() {
+                // Show map, hide route
+                mapContent.classList.remove('hidden');
+                routeContent.classList.add('hidden');
+
+                // Update tab styles
+                mapTab.classList.remove('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
+                mapTab.classList.add('bg-biker-red', 'text-white');
+                routeTab.classList.remove('bg-biker-red', 'text-white');
+                routeTab.classList.add('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
+
+                // Pause video if playing
+                routeVideo.pause();
+            });
+
+            routeTab.addEventListener('click', function() {
+                // Show route, hide map
+                routeContent.classList.remove('hidden');
+                mapContent.classList.add('hidden');
+
+                // Update tab styles
+                routeTab.classList.remove('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
+                routeTab.classList.add('bg-biker-red', 'text-white');
+                mapTab.classList.remove('bg-biker-red', 'text-white');
+                mapTab.classList.add('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
+            });
+        });
+    </script>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- JavaScript -->
+    <script src="js/navbar.js"></script>
+    <script src="js/carousel.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcas - Zona Biker 15</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --biker-red: #e30613;
+            --biker-black: #1a1a1a;
+        }
+
+        .bg-biker-red {
+            background-color: var(--biker-red);
+        }
+
+        .bg-biker-black {
+            background-color: var(--biker-black);
+        }
+
+        .text-biker-red {
+            color: var(--biker-red);
+        }
+
+        .text-biker-black {
+            color: var(--biker-black);
+        }
+
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hover-grow {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-grow:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <!-- Page Header -->
+    <section class="relative bg-biker-black text-white py-16">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <h1 class="text-4xl font-bold text-center text-biker-red">Marcas con las que Trabajamos</h1>
+        </div>
+    </section>
+
+    <!-- Brands Introduction -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6 text-biker-black">Colaboramos con las Mejores Marcas</h2>
+                <p class="text-gray-700 mb-4">
+                    En Zona Biker 15 trabajamos únicamente con las mejores marcas del mercado para garantizar la máxima calidad en todos nuestros productos y servicios. Nuestra cuidadosa selección de fabricantes nos permite ofrecerte lo mejor en cada categoría, desde motocicletas hasta equipamiento de seguridad.
+                </p>
+                <p class="text-gray-700 mb-4">
+                    Mantenemos relaciones directas con los fabricantes, lo que nos permite ofrecerte precios competitivos, garantía oficial y acceso a las últimas novedades. Nuestro equipo se actualiza constantemente mediante formaciones específicas de cada marca para brindarte el mejor asesoramiento técnico.
+                </p>
+                <p class="text-gray-700 mb-8">
+                    Estas son algunas de las marcas con las que colaboramos, todas ellas líderes en sus respectivos segmentos:
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Categories -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <!-- Motorcycle Brands -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold mb-4 text-biker-black text-center">Marcas de Motocicletas</h3>
+                <p class="text-gray-700 mb-8 text-center max-w-3xl mx-auto">
+                    Trabajamos con las principales marcas de motocicletas del mundo, ofreciendo una amplia gama de modelos para todos los gustos y necesidades. Desde potentes deportivas hasta cómodas ruteras, pasando por ágiles naked y versátiles trail, encontrarás la moto perfecta para ti.
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <!-- Brand 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">Honda</div>
+                    </div>
+
+                    <!-- Brand 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">Yamaha</div>
+                    </div>
+
+                    <!-- Brand 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">Kawasaki</div>
+                    </div>
+
+                    <!-- Brand 4 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">Suzuki</div>
+                    </div>
+
+                    <!-- Brand 5 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">Ducati</div>
+                    </div>
+
+                    <!-- Brand 6 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">BMW</div>
+                    </div>
+
+                    <!-- Brand 7 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">Triumph</div>
+                    </div>
+
+                    <!-- Brand 8 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">KTM</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accessories Brands -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold mb-4 text-biker-black text-center">Marcas de Accesorios</h3>
+                <p class="text-gray-700 mb-8 text-center max-w-3xl mx-auto">
+                    Contamos con los mejores accesorios del mercado para personalizar y mejorar el rendimiento de tu moto. Desde sistemas de escape que potencian el sonido y las prestaciones, hasta suspensiones de alta gama que mejoran el comportamiento dinámico, pasando por todo tipo de complementos estéticos y funcionales.
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <!-- Brand 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">Akrapovič</div>
+                    </div>
+
+                    <!-- Brand 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">Öhlins</div>
+                    </div>
+
+                    <!-- Brand 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">Rizoma</div>
+                    </div>
+
+                    <!-- Brand 4 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">Givi</div>
+                    </div>
+
+                    <!-- Brand 5 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">Brembo</div>
+                    </div>
+
+                    <!-- Brand 6 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">Yoshimura</div>
+                    </div>
+
+                    <!-- Brand 7 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">Puig</div>
+                    </div>
+
+                    <!-- Brand 8 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">SW-Motech</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Helmet and Safety Brands -->
+            <div>
+                <h3 class="text-2xl font-bold mb-4 text-biker-black text-center">Marcas de Cascos y Seguridad</h3>
+                <p class="text-gray-700 mb-8 text-center max-w-3xl mx-auto">
+                    Tu seguridad es nuestra prioridad. Por eso, trabajamos con las marcas más prestigiosas en equipamiento de protección. Ofrecemos cascos de última generación con las certificaciones más exigentes, así como chaquetas, pantalones, guantes y botas que combinan protección, comodidad y estilo para que disfrutes de tus rutas con total tranquilidad.
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <!-- Brand 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">Shoei</div>
+                    </div>
+
+                    <!-- Brand 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">Arai</div>
+                    </div>
+
+                    <!-- Brand 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">AGV</div>
+                    </div>
+
+                    <!-- Brand 4 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">HJC</div>
+                    </div>
+
+                    <!-- Brand 5 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">Alpinestars</div>
+                    </div>
+
+                    <!-- Brand 6 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">Dainese</div>
+                    </div>
+
+                    <!-- Brand 7 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">Rev'it</div>
+                    </div>
+
+                    <!-- Brand 8 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-grow">
+                        <div class="h-24 w-full bg-gray-200 flex items-center justify-center text-xl font-bold">Shark</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Info -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6 text-biker-black">¿Quieres ser nuestro socio?</h2>
+                <p class="text-gray-700 mb-4">
+                    Si representas a una marca y estás interesado en colaborar con Zona Biker 15, no dudes en contactarnos. Estamos siempre abiertos a nuevas colaboraciones que nos permitan ofrecer los mejores productos y servicios a nuestros clientes.
+                </p>
+                <p class="text-gray-700 mb-4">
+                    Nuestro establecimiento cuenta con más de 500 m² de exposición y un taller completamente equipado, lo que nos permite dar visibilidad y servicio técnico a las marcas con las que trabajamos. Además, organizamos regularmente eventos, presentaciones y jornadas de prueba que son una excelente oportunidad para dar a conocer nuevos productos.
+                </p>
+                <p class="text-gray-700 mb-8">
+                    Ofrecemos diferentes modalidades de colaboración adaptadas a las necesidades de cada marca, desde la distribución exclusiva hasta acuerdos de servicio técnico oficial. Nuestro equipo comercial estará encantado de estudiar la propuesta que mejor se adapte a tus objetivos.
+                </p>
+                <a href="contact.html" class="bg-biker-red hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-block">Contactar para colaboraciones</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- JavaScript -->
+    <script src="js/navbar.js"></script>
+</body>
+</html>

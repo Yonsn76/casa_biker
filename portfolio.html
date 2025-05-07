@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestros Trabajos - Zona Biker 15</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --biker-red: #e30613;
+            --biker-black: #1a1a1a;
+        }
+
+        .bg-biker-red {
+            background-color: var(--biker-red);
+        }
+
+        .bg-biker-black {
+            background-color: var(--biker-black);
+        }
+
+        .text-biker-red {
+            color: var(--biker-red);
+        }
+
+        .text-biker-black {
+            color: var(--biker-black);
+        }
+
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hover-grow {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-grow:hover {
+            transform: scale(1.05);
+        }
+        
+        .project-card {
+            display: block;
+        }
+        
+        .project-card.hidden {
+            display: none;
+        }
+        
+        .filter-btn.active {
+            background-color: var(--biker-red);
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <!-- Page Header -->
+    <section class="relative bg-biker-black text-white py-16">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <h1 class="text-4xl font-bold text-center text-biker-red">Nuestros Trabajos</h1>
+        </div>
+    </section>
+
+    <!-- Portfolio Introduction -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6 text-biker-black">Proyectos Destacados</h2>
+                <p class="text-gray-700 mb-8">
+                    En Zona Biker 15 nos enorgullecemos de nuestro trabajo. Aquí puedes ver algunos de nuestros proyectos más destacados, desde personalizaciones completas hasta pequeñas modificaciones que marcan la diferencia.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Filter -->
+    <section class="pb-8 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button class="filter-btn active bg-biker-red text-white px-6 py-2 rounded-lg font-medium" data-filter="all">Todos</button>
+                <button class="filter-btn bg-gray-200 hover:bg-gray-300 px-6 py-2 rounded-lg font-medium transition duration-300" data-filter="personalizacion">Personalizaciones</button>
+                <button class="filter-btn bg-gray-200 hover:bg-gray-300 px-6 py-2 rounded-lg font-medium transition duration-300" data-filter="restauracion">Restauraciones</button>
+                <button class="filter-btn bg-gray-200 hover:bg-gray-300 px-6 py-2 rounded-lg font-medium transition duration-300" data-filter="rendimiento">Mejoras de Rendimiento</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="py-8 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="projects-container">
+                <!-- Project 1: Personalización -->
+                <div class="project-card bg-gray-100 rounded-lg overflow-hidden shadow-lg hover-grow" data-category="personalizacion">
+                    <div class="h-64 bg-gray-300">
+                        <img src="images/trabajos/honda-cbr-custom.jpg" alt="Honda CBR Personalizada" class="w-full h-full object-cover" onerror="this.src='images/placeholder.jpg'">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-biker-black">Personalización Honda CBR</h3>
+                        <p class="text-gray-600 mb-2">Personalización completa</p>
+                        <p class="text-gray-700 mb-4">Transformación completa de una Honda CBR con pintura personalizada, escape Akrapovič y suspensiones Öhlins.</p>
+                        <button class="text-biker-red font-medium hover:underline project-details-btn" data-project="p001">Ver detalles</button>
+                    </div>
+                </div>
+
+                <!-- Project 2: Restauración -->
+                <div class="project-card bg-gray-100 rounded-lg overflow-hidden shadow-lg hover-grow" data-category="restauracion">
+                    <div class="h-64 bg-gray-300">
+                        <img src="images/trabajos/honda-cb750-restored.jpg" alt="Honda CB750 Restaurada" class="w-full h-full object-cover" onerror="this.src='images/placeholder.jpg'">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-biker-black">Restauración Kawasaki Z900</h3>
+                        <p class="text-gray-600 mb-2">Restauración</p>
+                        <p class="text-gray-700 mb-4">Restauración meticulosa de una Kawasaki Z900 clásica, respetando su esencia pero mejorando su rendimiento.</p>
+                        <button class="text-biker-red font-medium hover:underline project-details-btn" data-project="r001">Ver detalles</button>
+                    </div>
+                </div>
+
+                <!-- Project 3: Mejora de Rendimiento -->
+                <div class="project-card bg-gray-100 rounded-lg overflow-hidden shadow-lg hover-grow" data-category="rendimiento">
+                    <div class="h-64 bg-gray-300">
+                        <img src="images/trabajos/ducati-track.jpg" alt="Ducati Mejorada" class="w-full h-full object-cover" onerror="this.src='images/placeholder.jpg'">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-biker-black">Mejora Ducati Monster</h3>
+                        <p class="text-gray-600 mb-2">Mejora de rendimiento</p>
+                        <p class="text-gray-700 mb-4">Mejora de rendimiento en una Ducati Monster con reprogramación de centralita y sistema de escape completo.</p>
+                        <button class="text-biker-red font-medium hover:underline project-details-btn" data-project="m001">Ver detalles</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button id="load-more-btn" class="bg-biker-black hover:bg-gray-900 text-white font-bold py-3 px-8 rounded-lg transition duration-300">Cargar más proyectos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg max-w-5xl w-full max-h-90vh overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 id="modal-title" class="text-2xl font-bold text-biker-black">Detalles del Proyecto</h2>
+                    <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="modal-content">
+                    <!-- Content will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-biker-black">Lo que dicen nuestros clientes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="h-12 w-12 rounded-full bg-gray-300 mr-4"></div>
+                        <div>
+                            <h4 class="font-bold">Carlos Martínez</h4>
+                            <p class="text-gray-600">Propietario de Honda CBR</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">
+                        "El trabajo que han hecho con mi CBR es impresionante. No solo ha mejorado estéticamente, sino que el rendimiento es mucho mejor. Totalmente recomendable."
+                    </p>
+                    <div class="mt-4 text-biker-red">
+                        <span>★★★★★</span>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="h-12 w-12 rounded-full bg-gray-300 mr-4"></div>
+                        <div>
+                            <h4 class="font-bold">Laura Gómez</h4>
+                            <p class="text-gray-600">Propietaria de Ducati Monster</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">
+                        "Increíble el cambio que ha experimentado mi Ducati. El equipo de Zona Biker 15 ha sabido entender perfectamente lo que buscaba. El resultado supera mis expectativas."
+                    </p>
+                    <div class="mt-4 text-biker-red">
+                        <span>★★★★★</span>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="h-12 w-12 rounded-full bg-gray-300 mr-4"></div>
+                        <div>
+                            <h4 class="font-bold">Miguel Sánchez</h4>
+                            <p class="text-gray-600">Propietario de BMW R100</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">
+                        "La transformación de mi BMW en una Café Racer ha sido espectacular. Cada detalle está cuidado al máximo y el resultado es una moto única que llama la atención por donde pasa."
+                    </p>
+                    <div class="mt-4 text-biker-red">
+                        <span>★★★★★</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-biker-black text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6 text-biker-red">¿Quieres ser nuestro próximo proyecto?</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">
+                Contacta con nosotros y cuéntanos qué tienes en mente para tu moto. Juntos haremos realidad tu proyecto.
+            </p>
+            <a href="contact.html" class="bg-biker-red hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-block">Contactar ahora</a>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- JavaScript -->
+    <script src="js/navbar.js"></script>
+
+    <!-- Cargar archivos de trabajos -->
+    <script src="js/trabajos/personalizaciones.js"></script>
+    <script src="js/trabajos/restauraciones.js"></script>
+    <script src="js/trabajos/mejoras.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cargar datos de trabajos
+            const trabajosData = {
+                personalizaciones: window.personalizacionesData || {},
+                restauraciones: window.restauracionesData || {},
+                mejorasRendimiento: window.mejorasRendimientoData || {}
+            };
+            
+            console.log('Datos de trabajos cargados:', trabajosData);
+            
+            // Filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            const projectsContainer = document.getElementById('projects-container');
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            
+            // Modal elements
+            const projectModal = document.getElementById('project-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalContent = document.getElementById('modal-content');
+            const closeModal = document.getElementById('close-modal');
+            const projectDetailsBtns = document.querySelectorAll('.project-details-btn');
+            
+            // Filter button click event
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        if (filter === 'all') {
+                            card.classList.remove('hidden');
+                        } else {
+                            if (card.getAttribute('data-category') === filter) {
+                                card.classList.remove('hidden');
+                            } else {
+                                card.classList.add('hidden');
+                            }
+                        }
+                    });
+                    
+                    // Check if we need to show/hide load more button
+                    checkLoadMoreVisibility();
+                });
+            });
+            
+            // Load more button click event
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', function() {
+                    const hiddenProjects = document.querySelectorAll('.project-card.hidden-initially:not(.hidden)');
+                    hiddenProjects.forEach(project => {
+                        project.classList.remove('hidden-initially');
+                    });
+                    
+                    // Hide load more button after showing all projects
+                    this.style.display = 'none';
+                });
+            }
+            
+            // Project details button click event
+            projectDetailsBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const projectId = this.getAttribute('data-project-id');
+                    const projectDetails = getProjectDetails(projectId);
+                    
+                    if (projectDetails) {
+                        modalTitle.textContent = projectDetails.title;
+                        modalContent.innerHTML = projectDetails.fullDescription;
+                        projectModal.classList.remove('hidden');
+                    }
+                });
+            });
+            
+            // Close modal button click event
+            if (closeModal) {
+                closeModal.addEventListener('click', function() {
+                    projectModal.classList.add('hidden');
+                });
+            }
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === projectModal) {
+                    projectModal.classList.add('hidden');
+                }
+            });
+            
+            // Function to check if we need to show/hide load more button
+            function checkLoadMoreVisibility() {
+                if (loadMoreBtn) {
+                    const hiddenInitiallyProjects = document.querySelectorAll('.project-card.hidden-initially:not(.hidden)');
+                    if (hiddenInitiallyProjects.length > 0) {
+                        loadMoreBtn.style.display = 'block';
+                    } else {
+                        loadMoreBtn.style.display = 'none';
+                    }
+                }
+            }
+            
+            // Function to get project details by ID
+            function getProjectDetails(id) {
+                // Get project details from the data objects
+                let project = null;
+                
+                // Check in personalizaciones
+                if (trabajosData.personalizaciones && trabajosData.personalizaciones.projects) {
+                    project = trabajosData.personalizaciones.projects.find(p => p.id === id);
+                }
+                
+                // Check in restauraciones if not found
+                if (!project && trabajosData.restauraciones && trabajosData.restauraciones.projects) {
+                    project = trabajosData.restauraciones.projects.find(p => p.id === id);
+                }
+                
+                // Check in mejorasRendimiento if not found
+                if (!project && trabajosData.mejorasRendimiento && trabajosData.mejorasRendimiento.projects) {
+                    project = trabajosData.mejorasRendimiento.projects.find(p => p.id === id);
+                }
+                
+                return project;
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,63 @@
+/* Colores para las tarjetas de servicios */
+:root {
+  --biker-red: #e30613;
+  --biker-black: #1a1a1a;
+  --safety-yellow: #f7b500;
+  --mechanic-gray: #505050;
+  --custom-purple: #6b46c1;
+  --performance-blue: #2563eb;
+  --vintage-brown: #8b5a2b;
+}
+
+/* Clases de colores para las tarjetas de servicios */
+.text-biker-red { color: var(--biker-red); }
+.text-biker-black { color: var(--biker-black); }
+.text-safety-yellow { color: var(--safety-yellow); }
+.text-mechanic-gray { color: var(--mechanic-gray); }
+.text-custom-purple { color: var(--custom-purple); }
+.text-performance-blue { color: var(--performance-blue); }
+.text-vintage-brown { color: var(--vintage-brown); }
+
+.bg-biker-red { background-color: var(--biker-red); }
+.bg-biker-black { background-color: var(--biker-black); }
+.bg-safety-yellow { background-color: var(--safety-yellow); }
+.bg-mechanic-gray { background-color: var(--mechanic-gray); }
+.bg-custom-purple { background-color: var(--custom-purple); }
+.bg-performance-blue { background-color: var(--performance-blue); }
+.bg-vintage-brown { background-color: var(--vintage-brown); }
+
+.border-biker-red { border-color: var(--biker-red); }
+.border-biker-black { border-color: var(--biker-black); }
+.border-safety-yellow { border-color: var(--safety-yellow); }
+.border-mechanic-gray { border-color: var(--mechanic-gray); }
+.border-custom-purple { border-color: var(--custom-purple); }
+.border-performance-blue { border-color: var(--performance-blue); }
+.border-vintage-brown { border-color: var(--vintage-brown); }
+
+/* Estilos para las tarjetas de servicios */
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.service-button {
+  transition: all 0.3s ease;
+}
+
+.service-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Hover effects for the cards */
+.hover-grow {
+  transition: transform 0.3s ease;
+}
+
+.hover-grow:hover {
+  transform: scale(1.03);
+}

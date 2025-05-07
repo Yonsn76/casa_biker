@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios - Zona Biker 15</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --biker-red: #e30613;
+            --biker-black: #1a1a1a;
+            
+            /* Nuevos colores temáticos para servicios */
+            --racing-blue: #0d47a1;
+            --chrome-silver: #9e9e9e;
+            --safety-yellow: #ffc107;
+            --mechanic-gray: #455a64;
+            --custom-purple: #6a1b9a;
+            --delivery-orange: #ff5722;
+            --collector-green: #2e7d32;
+        }
+
+        .bg-biker-red {
+            background-color: var(--biker-red);
+        }
+
+        .bg-biker-black {
+            background-color: var(--biker-black);
+        }
+
+        .text-biker-red {
+            color: var(--biker-red);
+        }
+
+        .text-biker-black {
+            color: var(--biker-black);
+        }
+
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hover-grow {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-grow:hover {
+            transform: scale(1.05);
+        }
+
+        /* Clases de colores para servicios */
+        .bg-racing-blue { background-color: var(--racing-blue); }
+        .text-racing-blue { color: var(--racing-blue); }
+        .border-racing-blue { border-color: var(--racing-blue); }
+        
+        .bg-chrome-silver { background-color: var(--chrome-silver); }
+        .text-chrome-silver { color: var(--chrome-silver); }
+        .border-chrome-silver { border-color: var(--chrome-silver); }
+        
+        .bg-safety-yellow { background-color: var(--safety-yellow); }
+        .text-safety-yellow { color: var(--safety-yellow); }
+        .border-safety-yellow { border-color: var(--safety-yellow); }
+        
+        .bg-mechanic-gray { background-color: var(--mechanic-gray); }
+        .text-mechanic-gray { color: var(--mechanic-gray); }
+        .border-mechanic-gray { border-color: var(--mechanic-gray); }
+        
+        .bg-custom-purple { background-color: var(--custom-purple); }
+        .text-custom-purple { color: var(--custom-purple); }
+        .border-custom-purple { border-color: var(--custom-purple); }
+        
+        .bg-delivery-orange { background-color: var(--delivery-orange); }
+        .text-delivery-orange { color: var(--delivery-orange); }
+        .border-delivery-orange { border-color: var(--delivery-orange); }
+        
+        .bg-collector-green { background-color: var(--collector-green); }
+        .text-collector-green { color: var(--collector-green); }
+        .border-collector-green { border-color: var(--collector-green); }
+        
+        /* Estilos adicionales para tarjetas */
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            border-top: 5px solid transparent;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Efectos de hover para cada tarjeta */
+        .service-card.biker-red-card:hover {
+            background-color: rgba(227, 6, 19, 0.05);
+        }
+        
+        .service-card.racing-blue-card:hover {
+            background-color: rgba(13, 71, 161, 0.05);
+        }
+        
+        .service-card.safety-yellow-card:hover {
+            background-color: rgba(255, 193, 7, 0.05);
+        }
+        
+        .service-card.mechanic-gray-card:hover {
+            background-color: rgba(69, 90, 100, 0.05);
+        }
+        
+        .service-card.custom-purple-card:hover {
+            background-color: rgba(106, 27, 154, 0.05);
+        }
+        
+        .service-card.delivery-orange-card:hover {
+            background-color: rgba(255, 87, 34, 0.05);
+        }
+        
+        .service-card.collector-green-card:hover {
+            background-color: rgba(46, 125, 50, 0.05);
+        }
+        
+        /* Efecto de brillo en hover */
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            transform: scale(0);
+            transition: transform 0.5s ease-out;
+            z-index: -1;
+        }
+        
+        .service-card:hover::before {
+            transform: scale(1);
+        }
+        
+        /* Mejorar los botones de enlace */
+        .service-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-width: 200px;
+        }
+        
+        .service-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <!-- Page Header -->
+    <section class="relative bg-gradient-to-r from-biker-black to-biker-red text-white py-20">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <h1 class="text-5xl font-bold text-center text-white">
+                Nuestros <span class="text-biker-red bg-white px-2 py-1 rounded">Servicios</span>
+            </h1>
+            <div class="w-24 h-1 bg-white mx-auto mt-6"></div>
+        </div>
+    </section>
+
+    <!-- Services Introduction -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-biker-black text-center relative">
+                    <span class="inline-block relative">
+                        Servicios Profesionales para tu Moto
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-biker-red"></div>
+                    </span>
+                </h2>
+                <p class="text-gray-700 mb-6 text-lg leading-relaxed">
+                    En <span class="font-semibold text-biker-red">Zona Biker 15</span> ofrecemos una amplia gama de servicios para tu motocicleta. Desde accesorios de alta calidad hasta personalización completa, nuestro equipo de profesionales está aquí para ayudarte a conseguir la moto de tus sueños.
+                </p>
+                <p class="text-gray-700 mb-8 text-lg leading-relaxed">
+                    Cada servicio que ofrecemos está respaldado por nuestra experiencia de más de una década en el sector y por nuestro compromiso con la excelencia. Utilizamos solo componentes y materiales de primera calidad, trabajamos con las mejores marcas del mercado y contamos con técnicos especializados en cada área para garantizar resultados excepcionales.
+                </p>
+                <div class="flex justify-center">
+                    <div class="inline-flex items-center px-4 py-2 bg-gray-200 rounded-full text-sm text-gray-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-biker-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Todos nuestros servicios incluyen garantía y soporte técnico
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services List -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <!-- Service 1: Accessories -->
+            <div id="accesorios" class="service-card biker-red-card bg-white rounded-lg shadow-xl overflow-hidden mb-16 border-t-8 border-biker-red relative transform transition-all duration-300 hover:-translate-y-2">
+                <div class="md:flex">
+                    <div class="md:w-1/3 h-64 md:h-auto relative overflow-hidden">
+                        <!-- Video for Accessories -->
+                        <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
+                            <source src="videos/accesorios.mp4" type="video/mp4">
+                            Tu navegador no soporta videos HTML5.
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-r from-biker-red/50 to-transparent"></div>
+                    </div>
+                    <div class="md:w-2/3 p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-biker-red flex items-center justify-center mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-biker-red">Accesorios para Motos</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            Disponemos de una amplia selección de accesorios de las mejores marcas para personalizar y mejorar tu moto. Desde sistemas de escape hasta manillares, pasando por asientos personalizados y sistemas de iluminación.
+                        </p>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            Nuestro catálogo incluye productos de marcas premium como <span class="font-semibold">Akrapovič, Rizoma, Givi, Brembo</span> y muchas más. Todos nuestros accesorios están garantizados y ofrecemos asesoramiento personalizado para ayudarte a elegir los componentes que mejor se adapten a tu moto y a tu estilo de conducción.
+                        </p>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mb-6">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-biker-red mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Sistemas de escape</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-biker-red mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Manillares y puños</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-biker-red mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Asientos personalizados</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-biker-red mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Sistemas de iluminación</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-biker-red mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Portaequipajes</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-biker-red mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Protectores</span>
+                            </div>
+                        </div>
+                        <a href="catalog.html?category=accesorios" class="service-button bg-biker-red hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 inline-flex items-center">
+                            <span>Ver catálogo de accesorios</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 2: Tuning -->
+            <div id="tuning" class="service-card racing-blue-card bg-white rounded-lg shadow-xl overflow-hidden mb-16 border-t-8 border-racing-blue relative transform transition-all duration-300 hover:-translate-y-2">
+                <div class="md:flex flex-row-reverse">
+                    <div class="md:w-1/3 h-64 md:h-auto relative overflow-hidden">
+                        <!-- Video for Tuning -->
+                        <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
+                            <source src="videos/tunning.mp4" type="video/mp4">
+                            Tu navegador no soporta videos HTML5.
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-l from-racing-blue/50 to-transparent"></div>
+                    </div>
+                    <div class="md:w-2/3 p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-racing-blue flex items-center justify-center mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-racing-blue">Tuning de Motos</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            Nuestro servicio de tuning te permite personalizar y mejorar el rendimiento de tu moto. Desde modificaciones estéticas hasta mejoras mecánicas, nuestro equipo de expertos te ayudará a conseguir la moto de tus sueños.
+                        </p>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mb-6">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-racing-blue mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Mejora de rendimiento</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-racing-blue mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Reprogramación de centralitas</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-racing-blue mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Instalación de sistemas de escape</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-racing-blue mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Modificación de suspensiones</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-racing-blue mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Pintura personalizada</span>
+                            </div>
+                        </div>
+                        <a href="contact.html?service=tuning" class="service-button bg-racing-blue hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg transition duration-300 inline-flex items-center">
+                            <span>Solicitar presupuesto</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 3: Helmets and Safety -->
+            <div id="seguridad" class="service-card safety-yellow-card bg-white rounded-lg shadow-lg overflow-hidden mb-12 border-t-8 border-safety-yellow relative">
+                <div class="md:flex">
+                    <div class="md:w-1/3 h-64 md:h-auto relative overflow-hidden">
+                        <!-- Video for Helmets and Safety -->
+                        <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
+                            <source src="videos/cascos.mp4" type="video/mp4">
+                            Tu navegador no soporta videos HTML5.
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-r from-safety-yellow/30 to-transparent"></div>
+                    </div>
+                    <div class="md:w-2/3 p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-safety-yellow flex items-center justify-center mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-safety-yellow">Cascos y Equipamiento de Seguridad</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            Tu seguridad es nuestra prioridad. Ofrecemos una amplia gama de cascos y equipamiento de seguridad de las mejores marcas para garantizar tu protección en la carretera.
+                        </p>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            Todos nuestros productos cumplen con las normativas de seguridad más exigentes y están diseñados para ofrecer la máxima protección sin comprometer la comodidad.
+                        </p>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mb-6">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-safety-yellow mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Cascos integrales</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-safety-yellow mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Cascos modulares</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-safety-yellow mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Chaquetas y pantalones</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-safety-yellow mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Guantes</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-safety-yellow mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Botas</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-safety-yellow mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Protecciones corporales</span>
+                            </div>
+                        </div>
+                        <a href="catalog.html?category=cascos" class="service-button bg-safety-yellow hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 inline-flex items-center">
+                            <span>Ver catálogo de seguridad</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 4: Maintenance -->
+            <div id="mantenimiento" class="service-card mechanic-gray-card bg-white rounded-lg shadow-lg overflow-hidden mb-12 border-t-8 border-mechanic-gray relative">
+                <div class="md:flex flex-row-reverse">
+                    <div class="md:w-1/3 h-64 md:h-auto relative overflow-hidden">
+                        <!-- Video for Maintenance -->
+                        <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
+                            <source src="videos/reparacion.mp4" type="video/mp4">
+                            Tu navegador no soporta videos HTML5.
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-l from-mechanic-gray/30 to-transparent"></div>
+                    </div>
+                    <div class="md:w-2/3 p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-mechanic-gray flex items-center justify-center mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-mechanic-gray">Mantenimiento y Reparación</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            Mantén tu moto en perfecto estado con nuestro servicio de mantenimiento y reparación. Nuestros técnicos especializados se encargarán de que tu moto funcione siempre a la perfección.
+                        </p>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            Realizamos todo tipo de reparaciones, desde las más sencillas hasta las más complejas, utilizando siempre repuestos originales y herramientas especializadas.
+                        </p>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mb-6">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-mechanic-gray mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Mantenimiento preventivo</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-mechanic-gray mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Reparación de motores</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-mechanic-gray mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Diagnóstico electrónico</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-mechanic-gray mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Cambio de aceite</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-mechanic-gray mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Ajuste de frenos</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-mechanic-gray mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Revisión de suspensiones</span>
+                            </div>
+                        </div>
+                        <a href="contact.html?service=mantenimiento" class="service-button bg-mechanic-gray hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 inline-flex items-center">
+                            <span>Solicitar servicio</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 5: Custom Services -->
+            <div id="personalizados" class="service-card custom-purple-card bg-white rounded-lg shadow-lg overflow-hidden mb-12 border-t-8 border-custom-purple relative">
+                <div class="md:flex">
+                    <div class="md:w-1/3 h-64 md:h-auto relative overflow-hidden">
+                        <!-- Video for Custom Services -->
+                        <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
+                            <source src="videos/personalizacion.mp4" type="video/mp4">
+                            Tu navegador no soporta videos HTML5.
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-r from-custom-purple/30 to-transparent"></div>
+                    </div>
+                    <div class="md:w-2/3 p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-custom-purple flex items-center justify-center mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-custom-purple">Personalización de Motos</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            Convierte tu moto en una pieza única con nuestro servicio de personalización. Desde pintura personalizada hasta modificaciones estructurales, nuestro equipo de expertos hará realidad tu visión.
+                        </p>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            Nuestro catálogo incluye productos de marcas premium como <span class="font-semibold">Akrapovič, Rizoma, Givi, Brembo</span> y muchas más. Todos nuestros accesorios están garantizados y ofrecemos asesoramiento personalizado para ayudarte a elegir los componentes que mejor se adapten a tu moto y a tu estilo de conducción.
+                        </p>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mb-6">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-custom-purple mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Pintura personalizada</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-custom-purple mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Modificaciones estructurales</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-custom-purple mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Diseños exclusivos</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-custom-purple mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Restauración de motos clásicas</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-custom-purple mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Proyectos personalizados</span>
+                            </div>
+                        </div>
+                        <a href="contact.html?service=personalizacion" class="service-button bg-custom-purple hover:bg-purple-900 text-white font-bold py-3 px-6 rounded-lg transition duration-300 inline-flex items-center">
+                            <span>Solicitar presupuesto</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 6: Performance Upgrades -->
+            <div id="rendimiento" class="service-card performance-blue-card bg-white rounded-lg shadow-lg overflow-hidden mb-12 border-t-8 border-performance-blue relative">
+                <div class="md:flex flex-row-reverse">
+                    <div class="md:w-1/3 h-64 md:h-auto relative overflow-hidden">
+                        <!-- Video for Performance Upgrades -->
+                        <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
+                            <source src="videos/rendimiento.mp4" type="video/mp4">
+                            Tu navegador no soporta videos HTML5.
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-l from-performance-blue/30 to-transparent"></div>
+                    </div>
+                    <div class="md:w-2/3 p-8">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 rounded-full bg-performance-blue flex items-center justify-center mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-performance-blue">Mejoras de Rendimiento</h3>
+                        </div>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            Lleva el rendimiento de tu moto al siguiente nivel con nuestras mejoras especializadas. Desde sistemas de escape hasta reprogramación de ECU, tenemos todo lo que necesitas para maximizar el potencial de tu máquina.
+                        </p>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            Nuestros técnicos especializados en rendimiento evaluarán tu moto y te recomendarán las mejores opciones para aumentar la potencia, mejorar la respuesta del acelerador y optimizar el consumo de combustible.
+                        </p>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mb-6">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-performance-blue mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Sistemas de escape</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-performance-blue mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Reprogramación ECU</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-performance-blue mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Filtros de alto flujo</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-performance-blue mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Suspensiones ajustables</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-performance-blue mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Sistemas de frenos</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-performance-blue mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <span>Kits de transmisión</span>
+                            </div>
+                        </div>
+                        <a href="portfolio.html?category=mejorasRendimiento" class="service-button bg-performance-blue hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg transition duration-300 inline-flex items-center">
+                            <span>Ver trabajos realizados</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 7: Scale Model Gifts -->
+            <div id="modelos" class="service-card collector-green-card bg-white rounded-lg shadow-lg overflow-hidden mb-12 border-t-8 border-collector-green relative">
+                <div class="md:flex">
+                    <div class="md:w-1/3 h-64 md:h-auto relative overflow-hidden">
+                        <!-- Video for Scale Model Gifts -->
+                        <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
+                            <source src="videos/regalo.mp4" type="video/mp4">
+                            Tu navegador no soporta videos HTML5.
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-r from-collector-green/30 to-transparent"></div>
+                    </div>
+                    <div class="md:w-2/3 p-8">
+                        <h3 class="text-2xl font-bold mb-4 text-collector-green">Regalos a Escala: El Regalo Ideal para tu Biker</h3>
+                        <p class="text-gray-700 mb-4">
+                            Encuentra el regalo perfecto para los amantes de las motos con nuestra colección de modelos a escala de alta calidad. Réplicas detalladas de las motocicletas más emblemáticas que harán las delicias de cualquier aficionado.
+                        </p>
+                        <p class="text-gray-700 mb-4">
+                            Nuestra colección incluye modelos de todas las épocas y estilos: desde clásicas vintage hasta las últimas superbikes, pasando por legendarias motos de competición. Cada modelo está fabricado con materiales de primera calidad y reproduce fielmente hasta el más mínimo detalle de la moto original.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-700 mb-6">
+                            <li>Modelos a escala de marcas premium</li>
+                            <li>Réplicas exactas con detalles minuciosos</li>
+                            <li>Diferentes escalas disponibles (1:12, 1:18, 1:24)</li>
+                            <li>Ediciones limitadas y coleccionables</li>
+                            <li>Modelos personalizables</li>
+                            <li>Opciones de empaquetado para regalo</li>
+                        </ul>
+                        <a href="catalog.html?category=modelos" class="service-button bg-collector-green hover:bg-green-800 text-white font-bold py-2 px-6 rounded-lg transition duration-300">Ver catálogo de modelos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-16 bg-gradient-to-r from-biker-black to-gray-800 relative">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center">
+                <h2 class="text-4xl font-bold text-white mb-4 text-shadow">¿Listo para mejorar tu moto?</h2>
+                <p class="text-xl text-white mb-8 max-w-3xl mx-auto text-shadow">
+                    Contacta con nosotros hoy mismo y descubre todo lo que podemos hacer por ti y tu motocicleta.
+                </p>
+                <a href="contact.html" class="inline-block bg-white hover:bg-gray-100 text-biker-red font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-lg">
+                    <span class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        Contactar ahora
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- JavaScript -->
+    <script src="js/navbar.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

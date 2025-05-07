@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Zona Biker 15</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --biker-red: #e30613;
+            --biker-black: #1a1a1a;
+        }
+
+        .bg-biker-red {
+            background-color: var(--biker-red);
+        }
+
+        .bg-biker-black {
+            background-color: var(--biker-black);
+        }
+
+        .text-biker-red {
+            color: var(--biker-red);
+        }
+
+        .text-biker-black {
+            color: var(--biker-black);
+        }
+
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hover-grow {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-grow:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <!-- Catalog Header -->
+    <section class="bg-biker-black text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-4">Catálogo de Productos</h1>
+            <p class="text-xl max-w-3xl mx-auto">Descubre nuestra amplia selección de productos para motociclistas: cascos, accesorios, ropa, piezas de rendimiento y mucho más.</p>
+        </div>
+    </section>
+
+    <!-- Category Filters -->
+    <section class="py-8 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button class="category-filter bg-biker-black text-white px-4 py-2 rounded-lg hover:bg-biker-red transition duration-300 active" data-category="all">
+                    <i class="fas fa-th-large mr-1"></i> Todos los productos
+                </button>
+                <button class="category-filter bg-gray-200 text-biker-black px-4 py-2 rounded-lg hover:bg-biker-red hover:text-white transition duration-300" data-category="cascos">
+                    <i class="fas fa-hard-hat mr-1"></i> Cascos
+                </button>
+                <button class="category-filter bg-gray-200 text-biker-black px-4 py-2 rounded-lg hover:bg-biker-red hover:text-white transition duration-300" data-category="ropa">
+                    <i class="fas fa-tshirt mr-1"></i> Ropa
+                </button>
+                <button class="category-filter bg-gray-200 text-biker-black px-4 py-2 rounded-lg hover:bg-biker-red hover:text-white transition duration-300" data-category="accesorios">
+                    <i class="fas fa-motorcycle mr-1"></i> Accesorios
+                </button>
+                <button class="category-filter bg-gray-200 text-biker-black px-4 py-2 rounded-lg hover:bg-biker-red hover:text-white transition duration-300" data-category="mejoras">
+                    <i class="fas fa-cogs mr-1"></i> Mejoras
+                </button>
+                <button class="category-filter bg-gray-200 text-biker-black px-4 py-2 rounded-lg hover:bg-biker-red hover:text-white transition duration-300" data-category="mantenimiento">
+                    <i class="fas fa-tools mr-1"></i> Mantenimiento
+                </button>
+                <button class="category-filter bg-gray-200 text-biker-black px-4 py-2 rounded-lg hover:bg-biker-red hover:text-white transition duration-300" data-category="modelos">
+                    <i class="fas fa-gift mr-1"></i> Regalos a Escala
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-8 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-6">
+                <p class="text-gray-700 italic">Todos los precios están expresados en Soles Peruanos (S/)</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="products-container">
+                <!-- Products will be loaded here dynamically -->
+                <div id="loading-indicator" class="col-span-full text-center py-8">
+                    <p>Cargando productos...</p>
+                    <div class="mt-4 inline-block w-8 h-8 border-4 border-biker-red border-t-transparent rounded-full animate-spin"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg max-w-2xl w-full max-h-90vh overflow-auto">
+            <div class="flex justify-between items-center p-4 border-b">
+                <h3 id="modal-product-title" class="text-xl font-bold text-biker-black">Nombre del Producto</h3>
+                <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-4">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 mb-4 md:mb-0">
+                        <img id="modal-product-image" src="images/placeholder.jpg" alt="Producto" class="w-full h-auto rounded-lg">
+                    </div>
+                    <div class="md:w-1/2 md:pl-4">
+                        <p id="modal-product-description" class="text-gray-700 mb-4">Descripción detallada del producto.</p>
+                        <p class="text-biker-red font-bold text-xl mb-4">
+                            <span id="modal-product-price">S/ 0.00</span>
+                        </p>
+                        <button
+                            class="bg-biker-red hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-block"
+                            id="add-to-cart"
+                        >
+                            Añadir al carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-biker-black text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 text-center md:text-left mb-8 md:mb-0">
+                    <h2 class="text-3xl font-bold mb-6 text-biker-red">¿No encuentras lo que buscas?</h2>
+                    <p class="text-xl mb-8 max-w-3xl">
+                        Contáctanos y te ayudaremos a encontrar el producto perfecto para ti y tu moto. Trabajamos con las mejores marcas y podemos conseguir piezas específicas para tu modelo.
+                    </p>
+                    <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                        <a href="contact.html" class="bg-biker-red hover:bg-red-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-flex items-center">
+                            <i class="fas fa-envelope mr-2"></i> Contactar ahora
+                        </a>
+                        <a href="https://wa.me/51917025103" target="_blank" class="bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-flex items-center">
+                            <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-biker-red rounded-lg blur opacity-30"></div>
+                        <div class="relative bg-biker-black p-6 rounded-lg border border-biker-red">
+                            <h3 class="text-xl font-bold mb-4 text-biker-red">Solicitud Rápida</h3>
+                            <p class="text-gray-300 mb-4">Déjanos saber qué estás buscando y te contactaremos a la brevedad.</p>
+                            <div class="space-y-4">
+                                <input type="text" placeholder="Nombre" class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-biker-red">
+                                <input type="email" placeholder="Email" class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-biker-red">
+                                <textarea placeholder="¿Qué producto estás buscando?" rows="3" class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-biker-red"></textarea>
+                                <button id="quick-request-btn" class="w-full bg-biker-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                                    Enviar Solicitud
+                                </button>
+                                <div id="request-success" class="hidden mt-4 p-3 bg-green-100 text-green-800 rounded-lg">
+                                    ¡Gracias! Hemos recibido tu solicitud y te contactaremos pronto.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- JavaScript -->
+    <script src="js/navbar.js"></script>
+
+    <!-- Cargar archivos de catálogo -->
+    <script src="js/catalog/cascos.js"></script>
+    <script src="js/catalog/ropa.js"></script>
+    <script src="js/catalog/accesorios.js"></script>
+    <script src="js/catalog/mejoras.js"></script>
+    <script src="js/catalog/mantenimiento.js"></script>
+    <script src="js/catalog/modelos.js"></script>
+
+    <!-- Catalog Script -->
+    <script>
+        // Quick Request Form Handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const quickRequestBtn = document.getElementById('quick-request-btn');
+            const requestSuccess = document.getElementById('request-success');
+
+            if (quickRequestBtn) {
+                quickRequestBtn.addEventListener('click', function() {
+                    // Get form inputs
+                    const nameInput = quickRequestBtn.parentElement.querySelector('input[type="text"]');
+                    const emailInput = quickRequestBtn.parentElement.querySelector('input[type="email"]');
+                    const messageInput = quickRequestBtn.parentElement.querySelector('textarea');
+
+                    // Simple validation
+                    if (!nameInput.value || !emailInput.value || !messageInput.value) {
+                        alert('Por favor, completa todos los campos del formulario.');
+                        return;
+                    }
+
+                    // Show success message
+                    requestSuccess.classList.remove('hidden');
+
+                    // Clear form
+                    nameInput.value = '';
+                    emailInput.value = '';
+                    messageInput.value = '';
+
+                    // Hide success message after 5 seconds
+                    setTimeout(function() {
+                        requestSuccess.classList.add('hidden');
+                    }, 5000);
+                });
+            }
+        });
+
+        // Función para cargar los datos del catálogo desde los archivos JS
+        async function loadCatalogData() {
+            try {
+                console.log('Iniciando carga de datos del catálogo...');
+
+                // Categorías de productos
+                const categories = [
+                    'cascos',
+                    'ropa',
+                    'accesorios',
+                    'mejoras',
+                    'mantenimiento',
+                    'modelos'
+                ];
+
+                // Crear objeto de catálogo a partir de los datos JS ya cargados
+                const catalogData = {
+                    cascos: window.cascosData || {},
+                    ropa: window.ropaData || {},
+                    accesorios: window.accesoriosData || {},
+                    mejoras: window.mejorasData || {},
+                    mantenimiento: window.mantenimientoData || {},
+                    modelos: window.modelosData || {}
+                };
+
+                console.log('Datos del catálogo cargados desde archivos JS');
+
+                // Guardar los datos en una variable global
+                window.catalogData = catalogData;
+
+                return catalogData;
+            } catch (error) {
+                console.error('Error general al cargar los datos del catálogo:', error);
+                return null;
+            }
+        }
+
+        // Función para mostrar todos los productos (limitado a 3 por categoría)
+        function displayAllProducts(catalogData, filterCategory = 'all') {
+            const productsContainer = document.getElementById('products-container');
+
+            // Eliminar indicador de carga
+            const loadingIndicator = document.getElementById('loading-indicator');
+            if (loadingIndicator) {
+                loadingIndicator.remove();
+            }
+
+            // Limpiar el contenedor
+            productsContainer.innerHTML = '';
+
+            // Obtener productos (limitado a 3 por categoría)
+            let allProducts = [];
+
+            if (filterCategory === 'all') {
+                // Para "Todos los productos", mostrar 3 de cada categoría
+                Object.keys(catalogData).forEach(categoryKey => {
+                    if (catalogData[categoryKey].products) {
+                        // Tomar solo los primeros 3 productos de cada categoría
+                        const categoryProducts = catalogData[categoryKey].products.slice(0, 3);
+                        allProducts = allProducts.concat(
+                            categoryProducts.map(product => ({
+                                ...product,
+                                categoryKey,
+                                categoryName: catalogData[categoryKey].category
+                            }))
+                        );
+                    }
+                });
+            } else {
+                // Para una categoría específica, mostrar solo 3 productos
+                if (catalogData[filterCategory] && catalogData[filterCategory].products) {
+                    const categoryProducts = catalogData[filterCategory].products.slice(0, 3);
+                    allProducts = categoryProducts.map(product => ({
+                        ...product,
+                        categoryKey: filterCategory,
+                        categoryName: catalogData[filterCategory].category
+                    }));
+                }
+            }
+
+            // Mostrar mensaje si no hay productos
+            if (allProducts.length === 0) {
+                productsContainer.innerHTML = '<p class="col-span-full text-center py-8">No se encontraron productos en esta categoría.</p>';
+                return;
+            }
+
+            // Mostrar los productos
+            allProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'bg-white rounded-lg shadow-lg overflow-hidden hover-grow';
+
+                productCard.innerHTML = `
+                    <div class="h-48 bg-gray-200 relative overflow-hidden">
+                        <img src="images/${product.image}" alt="${product.name}"
+                             class="w-full h-full object-cover"
+                             onerror="this.src='images/placeholder.jpg'">
+                        <div class="absolute top-0 right-0 bg-biker-red text-white px-2 py-1 text-sm">
+                            ${product.categoryName}
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-1 text-biker-black">${product.name}</h3>
+                        <p class="text-gray-600 mb-2">${product.description}</p>
+                        <p class="text-biker-red font-bold mb-3">S/ ${product.price.toFixed(2)}</p>
+                        <button class="view-product-details bg-biker-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded inline-block transition duration-300"
+                                data-product='${JSON.stringify(product)}'>
+                            Ver detalles
+                        </button>
+                    </div>
+                `;
+
+                productsContainer.appendChild(productCard);
+            });
+
+            // Configurar botones de detalles
+            setupProductDetailButtons();
+        }
+
+        // Configurar los botones de detalles de producto
+        function setupProductDetailButtons() {
+            const buttons = document.querySelectorAll('.view-product-details');
+            const modal = document.getElementById('product-modal');
+
+            if (!modal) return;
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productData = JSON.parse(this.getAttribute('data-product'));
+
+                    // Actualizar el modal con los datos del producto
+                    document.getElementById('modal-product-title').textContent = productData.name;
+                    document.getElementById('modal-product-description').textContent = productData.details || productData.description;
+                    document.getElementById('modal-product-price').textContent = `S/ ${productData.price.toFixed(2)}`;
+
+                    const modalImage = document.getElementById('modal-product-image');
+                    modalImage.src = `images/${productData.image}`;
+                    modalImage.onerror = function() {
+                        this.src = 'images/placeholder.jpg';
+                    };
+
+                    // Configurar botón de añadir al carrito
+                    const addToCartButton = document.getElementById('add-to-cart');
+                    if (addToCartButton) {
+                        addToCartButton.onclick = function() {
+                            addToCart(productData);
+                            modal.classList.add('hidden');
+                        };
+                    }
+
+                    // Mostrar el modal
+                    modal.classList.remove('hidden');
+                });
+            });
+
+            // Configurar cierre del modal
+            const closeButton = document.getElementById('close-modal');
+            if (closeButton) {
+                closeButton.addEventListener('click', function() {
+                    modal.classList.add('hidden');
+                });
+            }
+
+            // Cerrar modal al hacer clic fuera
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
+        }
+
+        // Función para añadir un producto al carrito
+        function addToCart(product) {
+            // Obtener el carrito actual del localStorage o crear uno nuevo
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Comprobar si el producto ya está en el carrito
+            const existingProductIndex = cart.findIndex(item => item.id === product.id);
+
+            if (existingProductIndex >= 0) {
+                // Incrementar cantidad si ya existe
+                cart[existingProductIndex].quantity = (cart[existingProductIndex].quantity || 1) + 1;
+            } else {
+                // Añadir nuevo producto al carrito
+                cart.push({
+                    ...product,
+                    quantity: 1
+                });
+            }
+
+            // Guardar el carrito actualizado
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Actualizar contador del carrito y mostrar el botón
+            if (typeof updateCartCount === 'function') {
+                updateCartCount();
+            } else if (typeof updateCartCountBadge === 'function') {
+                updateCartCountBadge();
+            } else {
+                // Si ninguna función está disponible, mostrar el botón manualmente
+                const cartToggle = document.getElementById('cart-toggle');
+                if (cartToggle) {
+                    cartToggle.style.display = 'flex';
+                }
+            }
+
+            // Mostrar una pequeña notificación simple sin opciones
+            const confirmationDiv = document.createElement('div');
+            confirmationDiv.className = 'fixed bottom-4 right-4 bg-white p-3 rounded-lg shadow-lg z-50 border-l-4 border-biker-red';
+            confirmationDiv.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle text-biker-red text-xl mr-2"></i>
+                    <p class="text-sm font-medium text-gray-900">
+                        ${product.name} añadido al carrito
+                    </p>
+                </div>
+            `;
+            
+            document.body.appendChild(confirmationDiv);
+            
+            // Eliminar automáticamente después de 2 segundos
+            setTimeout(() => {
+                if (document.body.contains(confirmationDiv)) {
+                    confirmationDiv.remove();
+                }
+            }, 2000);
+        }
+
+        // Función para mostrar opciones de compartir carrito
+        function showShareOptions() {
+            // Crear modal de opciones
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white rounded-lg p-6 max-w-sm w-full">
+                    <h3 class="text-lg font-bold mb-4 text-biker-black">Compartir carrito</h3>
+                    <p class="text-gray-600 mb-4">Selecciona cómo quieres compartir tu lista de productos:</p>
+                    
+                    <div class="space-y-3">
+                        <button id="share-whatsapp" class="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center">
+                            <i class="fab fa-whatsapp text-xl mr-2"></i> WhatsApp
+                        </button>
+                        
+                        <button id="share-email" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center">
+                            <i class="fas fa-envelope text-xl mr-2"></i> Email
+                        </button>
+                    </div>
+                    
+                    <button id="close-modal" class="mt-4 w-full border border-gray-300 text-gray-700 font-medium py-2 px-4 rounded-lg hover:bg-gray-100 transition duration-300">
+                        Cancelar
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Configurar botones
+            document.getElementById('share-whatsapp').addEventListener('click', function() {
+                shareCartByMethod('whatsapp');
+                modal.remove();
+            });
+            
+            document.getElementById('share-email').addEventListener('click', function() {
+                shareCartByMethod('email');
+                modal.remove();
+            });
+            
+            document.getElementById('close-modal').addEventListener('click', function() {
+                modal.remove();
+            });
+        }
+
+        // Función auxiliar para capitalizar la primera letra
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
+        // Inicializar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM cargado, inicializando página de catálogo...');
+
+            // Cargar datos del catálogo
+            loadCatalogData().then(catalogData => {
+                if (!catalogData) {
+                    const productsContainer = document.getElementById('products-container');
+                    productsContainer.innerHTML = '<p class="col-span-full text-center">Error al cargar los productos. Por favor, intenta de nuevo más tarde.</p>';
+                    return;
+                }
+
+                // Mostrar todos los productos inicialmente
+                displayAllProducts(catalogData);
+
+                // Configurar filtros de categoría
+                const categoryFilters = document.querySelectorAll('.category-filter');
+                categoryFilters.forEach(filter => {
+                    filter.addEventListener('click', function() {
+                        // Actualizar clases de los botones
+                        categoryFilters.forEach(btn => {
+                            btn.classList.remove('bg-biker-black', 'text-white', 'active');
+                            btn.classList.add('bg-gray-200', 'text-biker-black');
+                        });
+                        this.classList.remove('bg-gray-200', 'text-biker-black');
+                        this.classList.add('bg-biker-black', 'text-white', 'active');
+
+                        // Filtrar productos
+                        const category = this.getAttribute('data-category');
+                        displayAllProducts(catalogData, category);
+                    });
+                });
+            });
+
+            // Configurar cierre del modal con tecla Escape
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    const modal = document.getElementById('product-modal');
+                    if (modal && !modal.classList.contains('hidden')) {
+                        modal.classList.add('hidden');
+                    }
+                }
+            });
+
+            // Verificar si hay un parámetro de categoría en la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoryParam = urlParams.get('category');
+
+            if (categoryParam) {
+                // Encontrar y activar el botón de filtro correspondiente
+                const filterButton = document.querySelector(`.category-filter[data-category="${categoryParam}"]`);
+                if (filterButton) {
+                    // Simular clic en el botón de filtro
+                    setTimeout(() => {
+                        filterButton.click();
+                    }, 500); // Pequeño retraso para asegurar que los datos se han cargado
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

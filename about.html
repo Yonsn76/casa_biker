@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros - Zona Biker 15</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --biker-red: #e30613;
+            --biker-black: #1a1a1a;
+        }
+
+        .bg-biker-red {
+            background-color: var(--biker-red);
+        }
+
+        .bg-biker-black {
+            background-color: var(--biker-black);
+        }
+
+        .text-biker-red {
+            color: var(--biker-red);
+        }
+
+        .text-biker-black {
+            color: var(--biker-black);
+        }
+
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hover-grow {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-grow:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <!-- Page Header -->
+    <section class="relative bg-biker-black text-white py-16">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <h1 class="text-4xl font-bold text-center text-biker-red">Sobre Nosotros</h1>
+        </div>
+    </section>
+
+    <!-- Nuestra Historia Section -->
+    <section id="historia" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 relative">
+                    <span class="bg-biker-red text-white px-4 py-1 rounded-lg">Nuestra Historia</span>
+                </h2>
+                
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                    <div class="md:flex">
+                        <!-- Imagen con efecto -->
+                        <div class="md:w-2/5 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-biker-red opacity-20"></div>
+                            <img src="images/nosotros.png" alt="Historia de Zona Biker 15" class="w-full h-full object-cover transform hover:scale-105 transition duration-500">
+                        </div>
+                        
+                        <!-- Contenido de texto -->
+                        <div class="md:w-3/5 p-6 md:p-8">
+                            <h3 class="text-2xl font-bold text-biker-red mb-4">De la pasión a la acción</h3>
+                            
+                            <div class="prose prose-lg max-w-none text-gray-700">
+                                <p class="mb-4">
+                                    <span class="font-semibold text-biker-black">Zona Biker 15</span> nació en 2018 de la pasión por las motocicletas de su fundador, quien transformó su afición en un negocio dedicado a satisfacer las necesidades de los motociclistas peruanos.
+                                </p>
+                                
+                                <p class="mb-4">
+                                    Comenzamos como un pequeño taller en Huánuco, ofreciendo servicios básicos de mantenimiento. Con el tiempo, expandimos nuestras operaciones para incluir la venta de accesorios, equipamiento de seguridad y repuestos de calidad.
+                                </p>
+                                
+                                <p class="mb-4">
+                                    Hoy, nos enorgullece ser reconocidos como un referente en el sector, con presencia en Lima y Huánuco, sirviendo a una comunidad creciente de entusiastas de las dos ruedas en todo el Perú.
+                                </p>
+                                
+                                <div class="mt-6 flex items-center">
+                                    <div class="w-16 h-1 bg-biker-red rounded-full mr-3"></div>
+                                    <p class="italic text-biker-black">"Nuestra misión es hacer que cada viaje sea seguro, cómodo y memorable."</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Timeline simplificado -->
+                            <div class="mt-8 border-t border-gray-200 pt-6">
+                                <h4 class="text-lg font-bold text-biker-black mb-4">Hitos importantes:</h4>
+                                <ul class="space-y-2">
+                                    <li class="flex items-start">
+                                        <span class="flex-shrink-0 w-8 h-8 bg-biker-red text-white rounded-full flex items-center justify-center mr-3">2018</span>
+                                        <span>Fundación en Huánuco como taller especializado</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="flex-shrink-0 w-8 h-8 bg-biker-red text-white rounded-full flex items-center justify-center mr-3">2020</span>
+                                        <span>Expansión a venta de accesorios y equipamiento</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="flex-shrink-0 w-8 h-8 bg-biker-red text-white rounded-full flex items-center justify-center mr-3">2022</span>
+                                        <span>Apertura de tienda en Lima y lanzamiento de e-commerce</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-biker-black">Nuestros Valores</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Value 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover-grow">
+                    <div class="text-biker-red text-4xl mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-biker-black">Calidad</h3>
+                    <p class="text-gray-700">Trabajamos solo con las mejores marcas y materiales para garantizar la máxima calidad en todos nuestros productos y servicios. Cada componente que instalamos y cada accesorio que vendemos ha sido rigurosamente seleccionado y probado para asegurar su durabilidad, rendimiento y seguridad. No comprometemos la calidad porque sabemos que en la carretera, cada detalle cuenta.</p>
+                </div>
+
+                <!-- Value 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover-grow">
+                    <div class="text-biker-red text-4xl mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-biker-black">Innovación</h3>
+                    <p class="text-gray-700">Estamos constantemente actualizándonos con las últimas tendencias y tecnologías del mundo de las motocicletas. Nuestro equipo asiste regularmente a ferias internacionales, cursos de especialización y eventos del sector para mantenerse a la vanguardia. Implementamos las técnicas más avanzadas en personalización, diagnóstico electrónico y optimización de rendimiento para ofrecer soluciones innovadoras que marquen la diferencia.</p>
+                </div>
+
+                <!-- Value 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover-grow">
+                    <div class="text-biker-red text-4xl mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-biker-black">Comunidad</h3>
+                    <p class="text-gray-700">Creemos en la importancia de la comunidad biker y fomentamos el compañerismo entre todos los amantes de las motos. Organizamos regularmente rutas, eventos y talleres formativos para compartir experiencias y conocimientos. Nuestra tienda es un punto de encuentro donde los moteros pueden reunirse, intercambiar ideas y formar parte de una familia que comparte la misma pasión. Apoyamos activamente iniciativas solidarias relacionadas con el mundo de las dos ruedas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-biker-black">Nuestro Equipo</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover-grow">
+                    <div class="h-64 bg-gray-300"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1 text-biker-black">Carlos Rodríguez</h3>
+                        <p class="text-biker-red mb-3">Fundador y Director</p>
+                        <p class="text-gray-700">Apasionado de las motos desde los 16 años, con más de 20 años de experiencia en el sector. Especialista en customización y mecánica de alto rendimiento, ha trabajado con las principales marcas del mercado. Su visión y liderazgo han convertido a Zona Biker 15 en un referente del sector. Piloto amateur en competiciones regionales y organizador de eventos para la comunidad biker.</p>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover-grow">
+                    <div class="h-64 bg-gray-300"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1 text-biker-black">Laura Martínez</h3>
+                        <p class="text-biker-red mb-3">Jefa de Taller</p>
+                        <p class="text-gray-700">Especialista en mecánica y personalización de motos con 15 años de experiencia. Ingeniera mecánica de formación, ha trabajado en equipos de competición y talleres especializados en toda Europa. Su meticulosidad y conocimiento técnico garantizan que cada moto que pasa por nuestro taller reciba un servicio de máxima calidad. Experta en diagnóstico electrónico y optimización de rendimiento.</p>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="bg-gray-100 rounded-lg overflow-hidden shadow-lg hover-grow">
+                    <div class="h-64 bg-gray-300"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1 text-biker-black">Miguel Sánchez</h3>
+                        <p class="text-biker-red mb-3">Asesor de Ventas</p>
+                        <p class="text-gray-700">Experto en equipamiento y accesorios, siempre al día de las últimas novedades del mercado. Con más de 10 años en el sector y una pasión desbordante por las motos, Miguel conoce a la perfección cada producto de nuestro catálogo. Su enfoque personalizado y su capacidad para entender las necesidades de cada cliente le permiten ofrecer siempre la solución perfecta. Especialista en equipamiento de seguridad y accesorios de alta gama.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-biker-black">Nuestros Eventos</h2>
+            <div class="text-center mb-8">
+                <p class="text-gray-700 max-w-3xl mx-auto">
+                    En Zona Biker 15 participamos activamente en los eventos más importantes del mundo de las motocicletas en Perú. Conoce dónde estaremos próximamente y revive nuestras participaciones anteriores.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8 mb-10 max-w-2xl mx-auto">
+                <!-- Upcoming Event -->
+                <!-- Single Event -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover-grow">
+                    <div class="h-64 bg-biker-black relative overflow-hidden">
+                        <img src="images/evento1.png" alt="Evento Zona Biker" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-300" onerror="this.src='images/placeholder.jpg'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute top-2 left-2">
+                            <span class="bg-gray-500 text-white text-sm font-bold py-1 px-3 rounded shadow-lg">Evento</span>
+                        </div>
+                        <div class="absolute top-2 right-2">
+                            <span class="bg-black bg-opacity-70 text-white text-sm font-bold py-1 px-3 rounded shadow-lg">20 Oct 2025</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-biker-black">Evento Zona Biker 2025</h3>
+                        <p class="text-gray-700 mb-4">Presentamos nuestra nueva línea de accesorios exclusivos y realizamos demostraciones de instalación en vivo para el mercado peruano.</p>
+                        <a href="events.html" class="inline-block text-biker-red hover:underline">Ver detalles →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="events.html" class="bg-biker-red hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">Ver todos los eventos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- JavaScript -->
+    <script src="js/navbar.js"></script>
+</body>
+</html>
+
+
+
+
+

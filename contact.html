@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Zona Biker 15</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --biker-red: #e30613;
+            --biker-black: #1a1a1a;
+        }
+
+        .bg-biker-red {
+            background-color: var(--biker-red);
+        }
+
+        .bg-biker-black {
+            background-color: var(--biker-black);
+        }
+
+        .text-biker-red {
+            color: var(--biker-red);
+        }
+
+        .text-biker-black {
+            color: var(--biker-black);
+        }
+
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hover-grow {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-grow:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Estilos CSS para redes sociales */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .facebook-icon {
+            background-color: #1877F2;
+        }
+        
+        .gmail-icon {
+            background-color: #EA4335;
+        }
+        
+        .tiktok-icon {
+            background-color: #000000;
+        }
+        
+        .whatsapp-icon {
+            background-color: #25D366;
+        }
+        
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #25D366;
+            color: white;
+            font-weight: bold;
+            padding: 10px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .whatsapp-button i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <!-- Page Header -->
+    <section class="relative bg-biker-black text-white py-16">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <h1 class="text-4xl font-bold text-center text-biker-red">Contacto</h1>
+        </div>
+    </section>
+
+    <!-- Contact Form and Info -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-6 text-biker-black">Envíanos un mensaje</h2>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Nombre completo</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-biker-red">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">Correo electrónico</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-biker-red">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-gray-700 mb-2">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-biker-red">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-gray-700 mb-2">Asunto</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-biker-red">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2">Mensaje</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-biker-red"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="bg-biker-red hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">Enviar mensaje</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold mb-6 text-biker-black">Información de contacto</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="text-biker-red mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 mb-1">Dirección</h3>
+                                <p class="text-gray-700">Carretera central paradero 15 Amarilis - Hco, Huánuco, Peru</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-biker-red mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 mb-1">Teléfono</h3>
+                                <p class="text-gray-700">917 025 103</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-biker-red mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 mb-1">Email</h3>
+                                <p class="text-gray-700">Gsegurityaslam@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-biker-red mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 mb-1">Horario</h3>
+                                <p class="text-gray-700">Lunes a Viernes: 9:00 - 20:00</p>
+                                <p class="text-gray-700">Sábados: 10:00 - 14:00</p>
+                                <p class="text-gray-700">Domingos: Cerrado</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-biker-red mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 mb-1">Redes Sociales</h3>
+                                <div class="social-icons">
+                                    <a href="https://web.facebook.com/profile.php?id=61572324423621" target="_blank" class="social-icon facebook-icon">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="mailto:Gsegurityaslam@gmail.com" class="social-icon gmail-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </a>
+                                    <a href="https://www.tiktok.com/@zona15lacasadelbiker?is_from_webapp=1&sender_device=pc" target="_blank" class="social-icon tiktok-icon">
+                                        <i class="fab fa-tiktok"></i>
+                                    </a>
+                                    <a href="https://wa.me/51917025103" target="_blank" class="social-icon whatsapp-icon">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="https://wa.me/51917025103" target="_blank" class="whatsapp-button">
+                                        <i class="fab fa-whatsapp"></i> Contáctanos por WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-biker-black">Encuéntranos en Tiempo Real</h2>
+            <div class="h-96 bg-white rounded-lg overflow-hidden shadow-lg">
+                <!-- Tabs for Map and Route -->
+                <div class="bg-gray-100 flex border-b">
+                    <button id="map-tab" class="py-2 px-4 bg-biker-red text-white font-medium flex-1 focus:outline-none transition duration-300 flex items-center justify-center">
+                        <i class="fas fa-map-marker-alt mr-2"></i> Mapa
+                    </button>
+                    <button id="route-tab" class="py-2 px-4 bg-gray-200 text-gray-700 hover:bg-gray-300 font-medium flex-1 focus:outline-none transition duration-300 flex items-center justify-center">
+                        <i class="fas fa-route mr-2"></i> Cómo Llegar
+                    </button>
+                </div>
+                
+                <!-- Map Content -->
+                <div id="map-content" class="h-full w-full">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!4v1700000000000!6m8!1m7!1sCAoSLEFGMVFpcE9fWWZQRXRXWXRXRGJQVnZYRXdVRnZVRnJfbXRkNnVYTGRXTlE.!2m2!1d-9.9297071!2d-76.2426442!3f180!4f0!5f0.7"
+                        style="border:0; width:100%; height:100%;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                
+                <!-- Route Content (Hidden by default) -->
+                <div id="route-content" class="h-full hidden bg-black flex items-center justify-center">
+                    <!-- Video container for TikTok video with proper aspect ratio -->
+                    <div class="relative h-full w-auto max-w-full mx-auto flex items-center justify-center">
+                        <video 
+                            id="route-video"
+                            class="h-full max-h-full max-w-full object-contain" 
+                            controls
+                            poster="images/route-poster.jpg">
+                            <source src="videos/ruta.mp4" type="video/mp4">
+                            Tu navegador no soporta videos HTML5.
+                        </video>
+                        <!-- Overlay with instructions when video is not playing -->
+                        <div id="video-overlay" class="absolute inset-0 bg-black bg-opacity-70 flex flex-col items-center justify-center text-white p-4 pointer-events-none">
+                            <i class="fas fa-play-circle text-5xl mb-4 text-biker-red"></i>
+                            <p class="text-center">Haz clic para ver el video con instrucciones para llegar a nuestra tienda</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <p class="text-gray-700 mb-4">Puedes encontrarnos fácilmente utilizando Google Maps o siguiendo las indicaciones del video.</p>
+                <a href="https://www.google.com/maps?q=-9.9297071,-76.2426442" target="_blank" class="bg-biker-red hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300 inline-flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Abrir en Google Maps
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript for tabs -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality for Map/Route
+            const mapTab = document.getElementById('map-tab');
+            const routeTab = document.getElementById('route-tab');
+            const mapContent = document.getElementById('map-content');
+            const routeContent = document.getElementById('route-content');
+            const routeVideo = document.getElementById('route-video');
+            const videoOverlay = document.getElementById('video-overlay');
+            
+            // Video overlay functionality
+            if (routeVideo && videoOverlay) {
+                // Hide overlay when video starts playing
+                routeVideo.addEventListener('play', function() {
+                    videoOverlay.classList.add('hidden');
+                });
+
+                // Show overlay when video is paused or ended
+                routeVideo.addEventListener('pause', function() {
+                    videoOverlay.classList.remove('hidden');
+                });
+
+                routeVideo.addEventListener('ended', function() {
+                    videoOverlay.classList.remove('hidden');
+                });
+
+                // Make the entire video container clickable to play video
+                routeContent.addEventListener('click', function() {
+                    if (routeVideo.paused) {
+                        routeVideo.play();
+                    } else {
+                        routeVideo.pause();
+                    }
+                });
+            }
+            
+            mapTab.addEventListener('click', function() {
+                // Show map, hide route
+                mapContent.classList.remove('hidden');
+                routeContent.classList.add('hidden');
+                
+                // Update tab styles
+                mapTab.classList.remove('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
+                mapTab.classList.add('bg-biker-red', 'text-white');
+                routeTab.classList.remove('bg-biker-red', 'text-white');
+                routeTab.classList.add('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
+                
+                // Pause video if playing
+                routeVideo.pause();
+            });
+            
+            routeTab.addEventListener('click', function() {
+                // Show route, hide map
+                routeContent.classList.remove('hidden');
+                mapContent.classList.add('hidden');
+                
+                // Update tab styles
+                routeTab.classList.remove('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
+                routeTab.classList.add('bg-biker-red', 'text-white');
+                mapTab.classList.remove('bg-biker-red', 'text-white');
+                mapTab.classList.add('bg-gray-200', 'text-gray-700', 'hover:bg-gray-300');
+            });
+        });
+    </script>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- JavaScript -->
+    <script src="js/navbar.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
