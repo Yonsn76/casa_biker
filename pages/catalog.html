@@ -110,7 +110,7 @@
             <div class="p-4">
                 <div class="flex flex-col md:flex-row">
                     <div class="md:w-1/2 mb-4 md:mb-0">
-                        <img id="modal-product-image" src="images/placeholder.jpg" alt="Producto" class="w-full h-auto rounded-lg">
+                        <img id="modal-product-image" src="../images/placeholder.jpg" alt="Producto" class="w-full h-auto rounded-lg">
                     </div>
                     <div class="md:w-1/2 md:pl-4">
                         <p id="modal-product-description" class="text-gray-700 mb-4">Descripción detallada del producto.</p>
@@ -175,15 +175,15 @@
     <div id="footer-container"></div>
 
     <!-- JavaScript -->
-    <script src="js/navbar.js"></script>
+    <script src="../js/navbar.js"></script>
 
     <!-- Cargar archivos de catálogo -->
-    <script src="js/catalog/cascos.js"></script>
-    <script src="js/catalog/ropa.js"></script>
-    <script src="js/catalog/accesorios.js"></script>
-    <script src="js/catalog/mejoras.js"></script>
-    <script src="js/catalog/mantenimiento.js"></script>
-    <script src="js/catalog/modelos.js"></script>
+    <script src="../js/catalog/cascos.js"></script>
+    <script src="../js/catalog/ropa.js"></script>
+    <script src="../js/catalog/accesorios.js"></script>
+    <script src="../js/catalog/mejoras.js"></script>
+    <script src="../js/catalog/mantenimiento.js"></script>
+    <script src="../js/catalog/modelos.js"></script>
 
     <!-- Catalog Script -->
     <script>
@@ -314,9 +314,9 @@
 
                 productCard.innerHTML = `
                     <div class="h-48 bg-gray-200 relative overflow-hidden">
-                        <img src="images/${product.image}" alt="${product.name}"
+                        <img src="../images/${product.image}" alt="${product.name}"
                              class="w-full h-full object-cover"
-                             onerror="this.src='images/placeholder.jpg'">
+                             onerror="this.src='../images/placeholder.jpg'">
                         <div class="absolute top-0 right-0 bg-biker-red text-white px-2 py-1 text-sm">
                             ${product.categoryName}
                         </div>
@@ -356,9 +356,9 @@
                     document.getElementById('modal-product-price').textContent = `S/ ${productData.price.toFixed(2)}`;
 
                     const modalImage = document.getElementById('modal-product-image');
-                    modalImage.src = `images/${productData.image}`;
+                    modalImage.src = `../images/${productData.image}`;
                     modalImage.onerror = function() {
-                        this.src = 'images/placeholder.jpg';
+                        this.src = '../images/placeholder.jpg';
                     };
 
                     // Configurar botón de añadir al carrito
@@ -437,9 +437,9 @@
                     </p>
                 </div>
             `;
-            
+
             document.body.appendChild(confirmationDiv);
-            
+
             // Eliminar automáticamente después de 2 segundos
             setTimeout(() => {
                 if (document.body.contains(confirmationDiv)) {
@@ -457,36 +457,36 @@
                 <div class="bg-white rounded-lg p-6 max-w-sm w-full">
                     <h3 class="text-lg font-bold mb-4 text-biker-black">Compartir carrito</h3>
                     <p class="text-gray-600 mb-4">Selecciona cómo quieres compartir tu lista de productos:</p>
-                    
+
                     <div class="space-y-3">
                         <button id="share-whatsapp" class="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center">
                             <i class="fab fa-whatsapp text-xl mr-2"></i> WhatsApp
                         </button>
-                        
+
                         <button id="share-email" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center">
                             <i class="fas fa-envelope text-xl mr-2"></i> Email
                         </button>
                     </div>
-                    
+
                     <button id="close-modal" class="mt-4 w-full border border-gray-300 text-gray-700 font-medium py-2 px-4 rounded-lg hover:bg-gray-100 transition duration-300">
                         Cancelar
                     </button>
                 </div>
             `;
-            
+
             document.body.appendChild(modal);
-            
+
             // Configurar botones
             document.getElementById('share-whatsapp').addEventListener('click', function() {
                 shareCartByMethod('whatsapp');
                 modal.remove();
             });
-            
+
             document.getElementById('share-email').addEventListener('click', function() {
                 shareCartByMethod('email');
                 modal.remove();
             });
-            
+
             document.getElementById('close-modal').addEventListener('click', function() {
                 modal.remove();
             });
@@ -559,6 +559,7 @@
     </script>
 </body>
 </html>
+
 
 
 

@@ -1,3 +1,6 @@
+// Variable global para determinar si estamos en la carpeta pages
+let isInPagesFolder = false;
+
 // Función para cargar la barra de navegación en todas las páginas
 document.addEventListener('DOMContentLoaded', function() {
     // Verificar si Font Awesome ya está cargado
@@ -11,6 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Obtener la ruta actual para resaltar el enlace activo
     const currentPath = window.location.pathname;
     const pageName = currentPath.split('/').pop();
+
+    // Determinar si estamos en la carpeta pages o en la raíz
+    isInPagesFolder = currentPath.includes('/pages/');
 
     // Contenido del header con la barra de navegación
     const headerContent = `
@@ -41,8 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="container mx-auto px-4 py-0">
         <div class="flex justify-between items-center h-16">
             <div class="flex items-center">
-                <a href="index.html" class="flex items-center relative">
-                    <img src="images/logo.png" alt="Zona Biker 15 Logo" class="h-44 mr-2 -mt-14 -mb-14 logo-glow">
+                <a href="${isInPagesFolder ? '../index.html' : 'index.html'}" class="flex items-center relative">
+                    <img src="${isInPagesFolder ? '../images/logo.png' : 'images/logo.png'}" alt="Zona Biker 15 Logo" class="h-44 mr-2 -mt-14 -mb-14 logo-glow">
                 </a>
             </div>
 
@@ -57,28 +63,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
             <!-- Desktop Navigation -->
             <nav class="hidden md:flex space-x-4 ml-auto">
-                <a href="index.html" class="text-white hover:text-biker-red transition duration-300 text-sm font-bold flex items-center ${pageName === 'index.html' || pageName === '' ? 'text-biker-red' : ''}">
+                <a href="${isInPagesFolder ? '../index.html' : 'index.html'}" class="text-white hover:text-biker-red transition duration-300 text-sm font-bold flex items-center ${pageName === 'index.html' || pageName === '' ? 'text-biker-red' : ''}">
                     <i class="fas fa-home mr-1"></i> Inicio
                 </a>
-                <a href="about.html" class="text-white hover:text-biker-red transition duration-300 text-sm font-bold flex items-center ${pageName === 'about.html' ? 'text-biker-red' : ''}">
+                <a href="${isInPagesFolder ? 'about.html' : 'pages/about.html'}" class="text-white hover:text-biker-red transition duration-300 text-sm font-bold flex items-center ${pageName === 'about.html' ? 'text-biker-red' : ''}">
                     <i class="fas fa-users mr-1"></i> Nosotros
                 </a>
-                <a href="services.html" class="text-white hover:text-biker-red transition duration-300 text-sm font-bold flex items-center ${pageName === 'services.html' ? 'text-biker-red' : ''}">
+                <a href="${isInPagesFolder ? 'services.html' : 'pages/services.html'}" class="text-white hover:text-biker-red transition duration-300 text-sm font-bold flex items-center ${pageName === 'services.html' ? 'text-biker-red' : ''}">
                     <i class="fas fa-tools mr-1"></i> Servicios
                 </a>
-                <a href="brands.html" class="text-white hover:text-biker-red transition duration-300 text-sm font-bold flex items-center ${pageName === 'brands.html' ? 'text-biker-red' : ''}">
+                <a href="${isInPagesFolder ? 'brands.html' : 'pages/brands.html'}" class="text-white hover:text-biker-red transition duration-300 text-sm font-bold flex items-center ${pageName === 'brands.html' ? 'text-biker-red' : ''}">
                     <i class="fas fa-tags mr-1"></i> Marcas
                 </a>
-                <a href="portfolio.html" class="text-white hover:text-biker-red transition duration-300 text-sm font-bold flex items-center ${pageName === 'portfolio.html' ? 'text-biker-red' : ''}">
+                <a href="${isInPagesFolder ? 'portfolio.html' : 'pages/portfolio.html'}" class="text-white hover:text-biker-red transition duration-300 text-sm font-bold flex items-center ${pageName === 'portfolio.html' ? 'text-biker-red' : ''}">
                     <i class="fas fa-images mr-1"></i> Trabajos
                 </a>
-                <a href="events.html" class="text-white hover:text-biker-red transition duration-300 text-sm font-bold flex items-center ${pageName === 'events.html' ? 'text-biker-red' : ''}">
+                <a href="${isInPagesFolder ? 'events.html' : 'pages/events.html'}" class="text-white hover:text-biker-red transition duration-300 text-sm font-bold flex items-center ${pageName === 'events.html' ? 'text-biker-red' : ''}">
                     <i class="fas fa-calendar-alt mr-1"></i> Eventos
                 </a>
-                <a href="catalog.html" class="text-white hover:text-biker-red transition duration-300 text-sm font-bold flex items-center ${pageName === 'catalog.html' ? 'text-biker-red' : ''}">
+                <a href="${isInPagesFolder ? 'catalog.html' : 'pages/catalog.html'}" class="text-white hover:text-biker-red transition duration-300 text-sm font-bold flex items-center ${pageName === 'catalog.html' ? 'text-biker-red' : ''}">
                     <i class="fas fa-shopping-cart mr-1"></i> Catálogo
                 </a>
-                <a href="contact.html" class="text-white hover:text-biker-red transition duration-300 text-sm font-bold flex items-center ${pageName === 'contact.html' ? 'text-biker-red' : ''}">
+                <a href="${isInPagesFolder ? 'contact.html' : 'pages/contact.html'}" class="text-white hover:text-biker-red transition duration-300 text-sm font-bold flex items-center ${pageName === 'contact.html' ? 'text-biker-red' : ''}">
                     <i class="fas fa-envelope mr-1"></i> Contacto
                 </a>
             </nav>
@@ -86,28 +92,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <!-- Mobile Navigation -->
         <div id="mobile-menu" class="md:hidden hidden mt-1 pb-1">
-            <a href="index.html" class="block py-1 text-white hover:text-biker-red font-bold flex items-center ${pageName === 'index.html' || pageName === '' ? 'text-biker-red' : ''}">
+            <a href="${isInPagesFolder ? '../index.html' : 'index.html'}" class="block py-1 text-white hover:text-biker-red font-bold flex items-center ${pageName === 'index.html' || pageName === '' ? 'text-biker-red' : ''}">
                 <i class="fas fa-home mr-2"></i> Inicio
             </a>
-            <a href="about.html" class="block py-1 text-white hover:text-biker-red font-bold flex items-center ${pageName === 'about.html' ? 'text-biker-red' : ''}">
+            <a href="${isInPagesFolder ? 'about.html' : 'pages/about.html'}" class="block py-1 text-white hover:text-biker-red font-bold flex items-center ${pageName === 'about.html' ? 'text-biker-red' : ''}">
                 <i class="fas fa-users mr-2"></i> Nosotros
             </a>
-            <a href="services.html" class="block py-1 text-white hover:text-biker-red font-bold flex items-center ${pageName === 'services.html' ? 'text-biker-red' : ''}">
+            <a href="${isInPagesFolder ? 'services.html' : 'pages/services.html'}" class="block py-1 text-white hover:text-biker-red font-bold flex items-center ${pageName === 'services.html' ? 'text-biker-red' : ''}">
                 <i class="fas fa-tools mr-2"></i> Servicios
             </a>
-            <a href="brands.html" class="block py-1 text-white hover:text-biker-red font-bold flex items-center ${pageName === 'brands.html' ? 'text-biker-red' : ''}">
+            <a href="${isInPagesFolder ? 'brands.html' : 'pages/brands.html'}" class="block py-1 text-white hover:text-biker-red font-bold flex items-center ${pageName === 'brands.html' ? 'text-biker-red' : ''}">
                 <i class="fas fa-tags mr-2"></i> Marcas
             </a>
-            <a href="portfolio.html" class="block py-1 text-white hover:text-biker-red font-bold flex items-center ${pageName === 'portfolio.html' ? 'text-biker-red' : ''}">
+            <a href="${isInPagesFolder ? 'portfolio.html' : 'pages/portfolio.html'}" class="block py-1 text-white hover:text-biker-red font-bold flex items-center ${pageName === 'portfolio.html' ? 'text-biker-red' : ''}">
                 <i class="fas fa-images mr-2"></i> Trabajos
             </a>
-            <a href="events.html" class="block py-1 text-white hover:text-biker-red font-bold flex items-center ${pageName === 'events.html' ? 'text-biker-red' : ''}">
+            <a href="${isInPagesFolder ? 'events.html' : 'pages/events.html'}" class="block py-1 text-white hover:text-biker-red font-bold flex items-center ${pageName === 'events.html' ? 'text-biker-red' : ''}">
                 <i class="fas fa-calendar-alt mr-2"></i> Eventos
             </a>
-            <a href="catalog.html" class="block py-1 text-white hover:text-biker-red font-bold flex items-center ${pageName === 'catalog.html' ? 'text-biker-red' : ''}">
+            <a href="${isInPagesFolder ? 'catalog.html' : 'pages/catalog.html'}" class="block py-1 text-white hover:text-biker-red font-bold flex items-center ${pageName === 'catalog.html' ? 'text-biker-red' : ''}">
                 <i class="fas fa-shopping-cart mr-2"></i> Catálogo
             </a>
-            <a href="contact.html" class="block py-1 text-white hover:text-biker-red font-bold flex items-center ${pageName === 'contact.html' ? 'text-biker-red' : ''}">
+            <a href="${isInPagesFolder ? 'contact.html' : 'pages/contact.html'}" class="block py-1 text-white hover:text-biker-red font-bold flex items-center ${pageName === 'contact.html' ? 'text-biker-red' : ''}">
                 <i class="fas fa-envelope mr-2"></i> Contacto
             </a>
         </div>
@@ -122,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <div class="flex items-center mb-4">
-                        <img src="images/logo.png" alt="Zona Biker 15 Logo" class="h-32 mr-2 logo-glow">
+                        <img src="${isInPagesFolder ? '../images/logo.png' : 'images/logo.png'}" alt="Zona Biker 15 Logo" class="h-32 mr-2 logo-glow">
                     </div>
                     <p class="mb-4">Tu tienda especializada en motos y accesorios. Ofrecemos los mejores productos y servicios para los amantes de las dos ruedas.</p>
                     <!-- Redes sociales con CSS puro -->
@@ -141,13 +147,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div>
                     <h3 class="text-xl font-bold mb-4 text-biker-red">Enlaces Rápidos</h3>
                     <ul class="space-y-2">
-                        <li><a href="index.html" class="hover:text-biker-red transition duration-300">Inicio</a></li>
-                        <li><a href="about.html" class="hover:text-biker-red transition duration-300">Nosotros</a></li>
-                        <li><a href="services.html" class="hover:text-biker-red transition duration-300">Servicios</a></li>
-                        <li><a href="catalog.html" class="hover:text-biker-red transition duration-300">Catálogo</a></li>
-                        <li><a href="portfolio.html" class="hover:text-biker-red transition duration-300">Trabajos</a></li>
-                        <li><a href="brands.html" class="hover:text-biker-red transition duration-300">Marcas</a></li>
-                        <li><a href="contact.html" class="hover:text-biker-red transition duration-300">Contacto</a></li>
+                        <li><a href="${isInPagesFolder ? '../index.html' : 'index.html'}" class="hover:text-biker-red transition duration-300">Inicio</a></li>
+                        <li><a href="${isInPagesFolder ? 'about.html' : 'pages/about.html'}" class="hover:text-biker-red transition duration-300">Nosotros</a></li>
+                        <li><a href="${isInPagesFolder ? 'services.html' : 'pages/services.html'}" class="hover:text-biker-red transition duration-300">Servicios</a></li>
+                        <li><a href="${isInPagesFolder ? 'catalog.html' : 'pages/catalog.html'}" class="hover:text-biker-red transition duration-300">Catálogo</a></li>
+                        <li><a href="${isInPagesFolder ? 'portfolio.html' : 'pages/portfolio.html'}" class="hover:text-biker-red transition duration-300">Trabajos</a></li>
+                        <li><a href="${isInPagesFolder ? 'brands.html' : 'pages/brands.html'}" class="hover:text-biker-red transition duration-300">Marcas</a></li>
+                        <li><a href="${isInPagesFolder ? 'contact.html' : 'pages/contact.html'}" class="hover:text-biker-red transition duration-300">Contacto</a></li>
                     </ul>
                 </div>
                 <div>
@@ -225,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
 
     document.body.appendChild(whatsappButton);
-    
+
     // Agregar el botón flotante del carrito encima del botón de WhatsApp
     const cartButton = document.createElement('div');
     cartButton.innerHTML = `
@@ -234,9 +240,9 @@ document.addEventListener('DOMContentLoaded', function() {
         <span class="cart-count-badge" id="cart-count-badge" style="position: absolute; top: -5px; right: -5px; background-color: #2b6cb0; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; border: 2px solid white;">0</span>
     </div>
     `;
-    
+
     document.body.appendChild(cartButton);
-    
+
     // Agregar el overlay y el modal del carrito si no existen
     if (!document.getElementById('cart-overlay')) {
         const cartOverlay = document.createElement('div');
@@ -244,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cartOverlay.className = 'cart-overlay';
         document.body.appendChild(cartOverlay);
     }
-    
+
     if (!document.getElementById('cart-modal')) {
         const cartModal = document.createElement('div');
         cartModal.id = 'cart-modal';
@@ -262,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <i class="fas fa-shopping-cart text-5xl text-gray-300 mb-4"></i>
                 <h2 class="text-xl font-bold mb-4">Tu carrito está vacío</h2>
                 <p class="text-gray-600 mb-6">Parece que aún no has añadido productos a tu carrito.</p>
-                <a href="catalog.html" class="bg-biker-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                <a href="${isInPagesFolder ? 'catalog.html' : 'pages/catalog.html'}" class="bg-biker-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
                     Explorar Catálogo
                 </a>
             </div>
@@ -280,21 +286,21 @@ document.addEventListener('DOMContentLoaded', function() {
             <!-- Sección de checkout -->
             <div id="checkout-section" class="p-4 bg-gray-50 border-t border-gray-200">
                 <h3 class="text-lg font-bold mb-4 text-biker-black">Finalizar Pedido</h3>
-                
+
                 <div class="space-y-3">
                     <button class="send-order-btn whatsapp-button w-full py-2 px-4" data-method="whatsapp">
                         <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
                     </button>
-                    
+
                     <button class="send-order-btn email-button w-full py-2 px-4" data-method="email">
                         <i class="fas fa-envelope"></i> Enviar por Email
                     </button>
-                    
+
                     <button id="share-cart-btn" class="w-full bg-biker-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
                         <i class="fas fa-share-alt mr-1"></i> Compartir carrito
                     </button>
                 </div>
-                
+
                 <div class="text-center pt-4">
                     <button id="clear-cart" class="text-red-500 hover:text-red-700 font-medium transition duration-300">
                         <i class="fas fa-trash mr-1"></i> Vaciar carrito
@@ -303,7 +309,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
         document.body.appendChild(cartModal);
-        
+
         // Agregar estilos para el carrito si no existen
         if (!document.getElementById('cart-styles')) {
             const cartStyles = document.createElement('style');
@@ -323,11 +329,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     transform: translateX(100%);
                     transition: transform 0.3s ease-in-out;
                 }
-                
+
                 .cart-modal.active {
                     transform: translateX(0);
                 }
-                
+
                 .cart-overlay {
                     position: fixed;
                     top: 0;
@@ -340,12 +346,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     visibility: hidden;
                     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
                 }
-                
+
                 .cart-overlay.active {
                     opacity: 1;
                     visibility: visible;
                 }
-                
+
                 .whatsapp-button {
                     background-color: #25D366;
                     color: white;
@@ -358,18 +364,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     border: none;
                     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                 }
-                
+
                 .whatsapp-button:hover {
                     background-color: #128C7E;
                     transform: translateY(-2px);
                     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
                 }
-                
+
                 .whatsapp-button i {
                     margin-right: 0.5rem;
                     font-size: 1.25rem;
                 }
-                
+
                 .email-button {
                     background-color: #4285F4;
                     color: white;
@@ -382,13 +388,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     border: none;
                     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                 }
-                
+
                 .email-button:hover {
                     background-color: #3367D6;
                     transform: translateY(-2px);
                     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
                 }
-                
+
                 .email-button i {
                     margin-right: 0.5rem;
                     font-size: 1.25rem;
@@ -397,37 +403,37 @@ document.addEventListener('DOMContentLoaded', function() {
             document.head.appendChild(cartStyles);
         }
     }
-    
+
     // Inicializar el carrito flotante
     const cartToggle = document.getElementById('cart-toggle');
     const cartModal = document.getElementById('cart-modal');
     const cartOverlay = document.getElementById('cart-overlay');
     const closeCart = document.getElementById('close-cart');
-    
+
     // Actualizar contador del carrito
     updateCartCountBadge();
-    
+
     // Mostrar carrito al hacer clic en el botón
     if (cartToggle) {
         cartToggle.addEventListener('click', function() {
             openCart();
         });
     }
-    
+
     // Cerrar carrito al hacer clic en el botón de cerrar
     if (closeCart) {
         closeCart.addEventListener('click', function() {
             closeCartModal();
         });
     }
-    
+
     // Cerrar carrito al hacer clic en el overlay
     if (cartOverlay) {
         cartOverlay.addEventListener('click', function() {
             closeCartModal();
         });
     }
-    
+
     // Configurar botones de enviar pedido
     const sendOrderButtons = document.querySelectorAll('.send-order-btn');
     if (sendOrderButtons) {
@@ -442,7 +448,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-    
+
     // Configurar botón de vaciar carrito
     const clearCartButton = document.getElementById('clear-cart');
     if (clearCartButton) {
@@ -452,7 +458,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     // Configurar botón de compartir carrito
     const shareCartButton = document.getElementById('share-cart-btn');
     if (shareCartButton) {
@@ -464,42 +470,42 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="bg-white rounded-lg p-6 max-w-sm w-full">
                     <h3 class="text-lg font-bold mb-4 text-biker-black">Compartir carrito</h3>
                     <p class="text-gray-600 mb-4">Selecciona cómo quieres compartir tu lista de productos:</p>
-                    
+
                     <div class="space-y-3">
                         <button id="share-whatsapp" class="whatsapp-button w-full py-2 px-4">
                             <i class="fab fa-whatsapp"></i> WhatsApp
                         </button>
-                        
+
                         <button id="share-email" class="email-button w-full py-2 px-4">
                             <i class="fas fa-envelope"></i> Email
                         </button>
                     </div>
-                    
+
                     <button id="close-modal" class="mt-4 w-full border border-gray-300 text-gray-700 font-medium py-2 px-4 rounded-lg hover:bg-gray-100 transition duration-300">
                         Cancelar
                     </button>
                 </div>
             `;
-            
+
             document.body.appendChild(modal);
-            
+
             // Configurar botones
             document.getElementById('share-whatsapp').addEventListener('click', function() {
                 shareCartByMethod('whatsapp');
                 modal.remove();
             });
-            
+
             document.getElementById('share-email').addEventListener('click', function() {
                 shareCartByMethod('email');
                 modal.remove();
             });
-            
+
             document.getElementById('close-modal').addEventListener('click', function() {
                 modal.remove();
             });
         });
     }
-    
+
     // Cargar contenido del carrito
     displayFloatingCart();
 });
@@ -508,11 +514,11 @@ document.addEventListener('DOMContentLoaded', function() {
 function openCart() {
     const cartModal = document.getElementById('cart-modal');
     const cartOverlay = document.getElementById('cart-overlay');
-    
+
     if (cartModal && cartOverlay) {
         cartModal.classList.add('active');
         cartOverlay.classList.add('active');
-        
+
         // Actualizar contenido del carrito
         displayFloatingCart();
     }
@@ -522,7 +528,7 @@ function openCart() {
 function closeCartModal() {
     const cartModal = document.getElementById('cart-modal');
     const cartOverlay = document.getElementById('cart-overlay');
-    
+
     if (cartModal && cartOverlay) {
         cartModal.classList.remove('active');
         cartOverlay.classList.remove('active');
@@ -534,15 +540,15 @@ function updateCartCountBadge() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartCountBadge = document.getElementById('cart-count-badge');
     const cartToggle = document.getElementById('cart-toggle');
-    
+
     // Calcular el total de items
     const totalItems = cart.reduce((total, item) => total + (item.quantity || 1), 0);
-    
+
     // Actualizar el contador
     if (cartCountBadge) {
         cartCountBadge.textContent = totalItems;
     }
-    
+
     // Mostrar u ocultar el botón del carrito según si hay productos
     if (cartToggle) {
         if (totalItems > 0) {
@@ -559,12 +565,12 @@ function displayFloatingCart() {
     const cartSummary = document.getElementById('cart-summary');
     const emptyCartMessage = document.getElementById('empty-cart-message');
     const checkoutSection = document.getElementById('checkout-section');
-    
+
     if (!cartItems) return;
-    
+
     // Obtener el carrito del localStorage
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
+
     // Mostrar mensaje si el carrito está vacío
     if (cart.length === 0) {
         if (emptyCartMessage) emptyCartMessage.classList.remove('hidden');
@@ -573,31 +579,31 @@ function displayFloatingCart() {
         cartItems.innerHTML = '';
         return;
     }
-    
+
     // Ocultar mensaje de carrito vacío y mostrar resumen
     if (emptyCartMessage) emptyCartMessage.classList.add('hidden');
     if (cartSummary) cartSummary.classList.remove('hidden');
     if (checkoutSection) checkoutSection.classList.remove('hidden');
-    
+
     // Limpiar el contenedor
     cartItems.innerHTML = '';
-    
+
     // Variables para el total
     let subtotal = 0;
-    
+
     // Mostrar cada item del carrito
     cart.forEach((item, index) => {
         const quantity = item.quantity || 1;
         const itemTotal = item.price * quantity;
         subtotal += itemTotal;
-        
+
         const cartItem = document.createElement('div');
         cartItem.className = 'cart-item flex justify-between items-center p-3 mb-3 bg-white rounded-lg shadow-sm border border-gray-100';
-        
+
         cartItem.innerHTML = `
             <div class="flex items-center">
                 <div class="w-16 h-16 bg-gray-200 rounded-lg overflow-hidden mr-3">
-                    <img src="images/${item.image}" alt="${item.name}" class="w-full h-full object-cover">
+                    <img src="${isInPagesFolder ? '../images/' : 'images/'}${item.image}" alt="${item.name}" class="w-full h-full object-cover">
                 </div>
                 <div>
                     <h3 class="font-bold text-sm">${item.name}</h3>
@@ -616,39 +622,39 @@ function displayFloatingCart() {
                 </button>
             </div>
         `;
-        
+
         cartItems.appendChild(cartItem);
     });
-    
+
     // Actualizar el contador del carrito
     updateCartCountBadge();
-    
+
     // Configurar eventos para los botones de cantidad
     const decreaseButtons = document.querySelectorAll('.decrease-quantity');
     const increaseButtons = document.querySelectorAll('.increase-quantity');
     const removeButtons = document.querySelectorAll('.remove-item');
-    
+
     decreaseButtons.forEach(button => {
         button.addEventListener('click', function() {
             const index = parseInt(this.getAttribute('data-index'));
             decreaseQuantity(index);
         });
     });
-    
+
     increaseButtons.forEach(button => {
         button.addEventListener('click', function() {
             const index = parseInt(this.getAttribute('data-index'));
             increaseQuantity(index);
         });
     });
-    
+
     removeButtons.forEach(button => {
         button.addEventListener('click', function() {
             const index = parseInt(this.getAttribute('data-index'));
             removeItem(index);
         });
     });
-    
+
     // Actualizar el resumen del carrito
     updateCartSummary(subtotal);
 }
@@ -657,7 +663,7 @@ function displayFloatingCart() {
 function updateCartSummary(subtotal) {
     const cartSummary = document.getElementById('cart-summary');
     if (!cartSummary) return;
-    
+
     cartSummary.innerHTML = `
         <div class="flex justify-between items-center mb-4">
             <h3 class="text-lg font-bold text-biker-black">Subtotal</h3>
@@ -722,34 +728,34 @@ function sendWhatsAppDirectly() {
     }
 
     let message = 'Hola! Me interesa realizar el siguiente pedido en Zona Biker 15:\n\n';
-    
+
     // Listar productos
     let subtotal = 0;
     cart.forEach((item, index) => {
         const quantity = item.quantity || 1;
         const itemTotal = item.price * quantity;
         subtotal += itemTotal;
-        
+
         message += `${index + 1}. ${item.name}\n`;
         message += `   Cantidad: ${quantity}\n`;
         message += `   Precio: S/ ${item.price.toFixed(2)}\n`;
         message += `   Subtotal: S/ ${itemTotal.toFixed(2)}\n\n`;
     });
-    
+
     // Calcular total con envío
     const shipping = 10;
     const total = subtotal + shipping;
-    
+
     message += "Resumen:\n";
     message += `Subtotal: S/ ${subtotal.toFixed(2)}\n`;
     message += `Envío: S/ ${shipping.toFixed(2)}\n`;
     message += `TOTAL: S/ ${total.toFixed(2)}\n\n`;
-    
+
     message += "Me gustaría saber:\n";
     message += "- Qué métodos de pago aceptan (transferencia, efectivo, Yape, etc.)\n";
     message += "- Cuánto tiempo tardaría en recibir mi pedido\n";
     message += "- Si todos los productos están disponibles\n\n";
-    
+
     message += "Por favor, contáctame para confirmar mi pedido y coordinar el pago y entrega. ¡Gracias!";
 
     const encodedMessage = encodeURIComponent(message);
@@ -771,34 +777,34 @@ function sendOrderByMethod(method) {
     }
 
     let message = 'Hola! Me interesa realizar el siguiente pedido en Zona Biker 15:\n\n';
-    
+
     // Listar productos
     let subtotal = 0;
     cart.forEach((item, index) => {
         const quantity = item.quantity || 1;
         const itemTotal = item.price * quantity;
         subtotal += itemTotal;
-        
+
         message += `${index + 1}. ${item.name}\n`;
         message += `   Cantidad: ${quantity}\n`;
         message += `   Precio: S/ ${item.price.toFixed(2)}\n`;
         message += `   Subtotal: S/ ${itemTotal.toFixed(2)}\n\n`;
     });
-    
+
     // Calcular total con envío
     const shipping = 10;
     const total = subtotal + shipping;
-    
+
     message += "Resumen:\n";
     message += `Subtotal: S/ ${subtotal.toFixed(2)}\n`;
     message += `Envío: S/ ${shipping.toFixed(2)}\n`;
     message += `TOTAL: S/ ${total.toFixed(2)}\n\n`;
-    
+
     message += "Me gustaría saber:\n";
     message += "- Qué métodos de pago aceptan (transferencia, efectivo, Yape, etc.)\n";
     message += "- Cuánto tiempo tardaría en recibir mi pedido\n";
     message += "- Si todos los productos están disponibles\n\n";
-    
+
     message += "Por favor, contáctame para confirmar mi pedido y coordinar el pago y entrega. ¡Gracias!";
 
     if (method === 'email') {
@@ -844,7 +850,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 display: flex;
                 gap: 15px;
             }
-            
+
             .footer-social-icon {
                 width: 40px;
                 height: 40px;
@@ -856,24 +862,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 text-decoration: none;
                 transition: all 0.3s ease;
             }
-            
+
             .footer-social-icon:hover {
                 transform: translateY(-5px);
                 color: var(--biker-red) !important;
             }
-            
+
             .footer-facebook-icon {
                 background-color: #1877F2;
             }
-            
+
             .footer-gmail-icon {
                 background-color: #EA4335;
             }
-            
+
             .footer-tiktok-icon {
                 background-color: #000000;
             }
-            
+
             .footer-whatsapp-icon {
                 background-color: #25D366;
             }
@@ -888,7 +894,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const totalItems = cart.reduce((total, item) => total + (item.quantity || 1), 0);
     const cartToggle = document.getElementById('cart-toggle');
-    
+
     // Mostrar el botón solo si hay productos
     if (cartToggle && totalItems > 0) {
         cartToggle.style.display = 'flex';
